@@ -2,82 +2,39 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Noxa</title>
     <style>
-    body { background-color: #0c0c0c !important; color: white !important; margin: 0; font-family: sans-serif; }
-
-    /* زر Noxa المتوازن: حجم مريح للعين وللضغط */
-    .menu-btn { 
-        font-size: 15px !important; 
-        padding: 12px 25px !important; 
-        cursor: pointer; 
-        background: #1a1a1a; 
-        border: 1px solid #3498db; 
-        border-radius: 12px; 
-        display: inline-block; 
-        margin: 15px;
-    }
-
-    /* القائمة الجانبية: متوازنة */
-    .sidebar { 
-        display: none; position: fixed; top: 0; right: 0; width: 250px; height: 100%; 
-        background: #111; padding: 20px; z-index: 1000;
-    }
-    .menu-item { padding: 12px; font-size: 15px; color: white; text-decoration: none; display: block; }
-
-    /* بطاقة المسلسل المتوازنة */
-    .card { 
-        background: #161616; border-radius: 12px; padding: 12px; 
-        width: 160px; text-align: center; margin: 15px; 
-    }
-    .btn-watch { 
-        background: #3498db; color: white; padding: 8px; width: 100%; 
-        border: none; border-radius: 6px; font-size: 14px; margin-top: 8px; cursor: pointer; 
-    }
-</style>
-
+        body { background-color: #0c0c0c; color: white; margin: 0; font-family: sans-serif; }
+        .menu-btn { font-size: 15px; padding: 12px; cursor: pointer; color: #3498db; }
+        
+        /* شبكة المسلسلات */
+        .grid-container { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); 
+            gap: 12px; 
+            padding: 15px; 
+        }
+        .card { background: #161616; border-radius: 10px; padding: 10px; text-align: center; }
+        .btn-watch { background: #3498db; color: white; padding: 10px; border: none; border-radius: 5px; width: 100%; cursor: pointer; }
+    </style>
 </head>
 <body>
 
-    <div class="header-container">
-        <div class="menu-btn" onclick="toggleSidebar()">☰ Noxa</div>
-    </div>
+    <div class="menu-btn" onclick="alert('القائمة تعمل!')">☰ Noxa</div>
 
-    <div class="sidebar" id="mySidebar">
-        <div class="close-btn" onclick="toggleSidebar()">✕ إغلاق</div>
-        <a href="index.html" class="menu-item">🏠 الرئيسية</a>
-        <a href="#" class="menu-item">🎬 المسلسلات والأفلام</a>
-        <a href="#" class="menu-item">📖 المانجا والمانهوا</a>
-        <a href="#" class="menu-item">⚙️ الإعدادات</a>
-    </div>
     <div class="grid-container">
-    
-    <div class="card">
-        <div style="background:#333; height:180px; border-radius:10px; margin-bottom:10px;">صورة</div>
-        <h4>اسم المسلسل</h4>
-        <button class="btn-watch">مشاهدة</button>
+        <div class="card">
+            <div style="background:#444; height:150px; border-radius:5px;"></div>
+            <h4>اسم المسلسل 1</h4>
+            <button class="btn-watch">مشاهدة</button>
+        </div>
+        <div class="card">
+            <div style="background:#444; height:150px; border-radius:5px;"></div>
+            <h4>اسم المسلسل 2</h4>
+            <button class="btn-watch">مشاهدة</button>
+        </div>
     </div>
 
-    <div class="card">
-        <div style="background:#333; height:180px; border-radius:10px; margin-bottom:10px;">صورة</div>
-        <h4>اسم المسلسل 2</h4>
-        <button class="btn-watch">مشاهدة</button>
-    </div>
-
-</div>
-
-
-    <script>
-        function toggleSidebar() {
-            var sidebar = document.getElementById("mySidebar");
-            if (sidebar.style.display === "block") {
-                sidebar.style.display = "none";
-            } else {
-                sidebar.style.display = "block";
-            }
-        }
-    </script>
 </body>
 </html>
 
