@@ -1,30 +1,50 @@
-<style>
-    /* تنسيق الخلفية والشبكة */
-    body { background-color: #0c0c0c; color: white; font-family: sans-serif; margin: 0; }
-    
-    .grid { 
-        display: grid; 
-        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); 
-        gap: 15px; 
-        padding: 20px; 
-    }
-    
-    /* تنسيق كل بطاقة فيلم */
-    .card { background: #1a1a1a; border-radius: 10px; overflow: hidden; }
-    .card img { width: 100%; height: 200px; object-fit: cover; }
-    .card-content { padding: 10px; }
-    .title { font-size: 14px; margin: 5px 0; }
-    .info { font-size: 12px; color: #888; }
-</style>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { background-color: #0c0c0c; color: white; margin: 0; font-family: sans-serif; display: flex; }
+        
+        /* القائمة الجانبية */
+        .sidebar { width: 250px; height: 100vh; background: #111; padding: 20px; border-left: 1px solid #333; }
+        .menu-item { padding: 15px 0; color: #ccc; cursor: pointer; }
+        
+        /* واجهة العرض الرئيسية */
+        .main-content { flex: 1; padding: 20px; }
+        .hero { height: 300px; background: #1a1a1a; border-radius: 20px; padding: 20px; display: flex; flex-direction: column; justify-content: flex-end; }
+        
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 20px; margin-top: 30px; }
+        .card { background: #1a1a1a; border-radius: 10px; overflow: hidden; }
+        .card img { width: 100%; height: 220px; object-fit: cover; }
+        .card-body { padding: 10px; font-size: 13px; }
+        
+        .btn-watch { background: #fff; color: black; padding: 8px 20px; border-radius: 20px; text-decoration: none; display: inline-block; width: fit-content; }
+    </style>
+</head>
+<body>
 
-<!-- هيكل البطاقات -->
-<div class="grid">
-    <!-- مثال لبطاقة واحدة، يمكنك تكرارها -->
-    <div class="card">
-        <img src="رابط_صورة_الفيلم" alt="Movie">
-        <div class="card-content">
-            <div class="title">اسم المسلسل</div>
-            <div class="info">2026 • finished</div>
-        </div>
+    <div class="sidebar">
+        <h2>Aether</h2>
+        <div class="menu-item">🏠 الرئيسية</div>
+        <div class="menu-item">🎬 المسلسلات والأفلام</div>
+        <div class="menu-item">📖 المانجا</div>
+        <div class="menu-item">📺 القنوات</div>
     </div>
-</div>
+
+    <div class="main-content">
+        <div class="hero">
+            <h1>Dr. Stone: Science Future</h1>
+            <a href="#" class="btn-watch">Watch Now</a>
+        </div>
+
+        <h2>Recent Releases</h2>
+        <div class="grid">
+            <div class="card">
+                <img src="https://m.media-amazon.com/images/M/MV5BMDk4Y2U5MmMtMzA3My00NGFiLWI2YjItYTI2Y2Q0OWM5NTE1XkEyXkFqcGdeQXVyMTA1MTA0MTEw._V1_.jpg">
+                <div class="card-body">The Vampire Diaries</div>
+            </div>
+            </div>
+    </div>
+
+</body>
+</html>
