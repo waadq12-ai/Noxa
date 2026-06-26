@@ -4,40 +4,47 @@
     <meta charset="UTF-8">
     <title>Noxa</title>
     <style>
-    /* إزالة كل الهوامش ليتمدد الموقع لكامل الشاشة */
-    body { background-color: #050505 !important; color: white !important; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; overflow-x: hidden; }
+    /* تنسيق الجسم الأساسي */
+    body { background-color: #050505 !important; color: white !important; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
 
-    /* جعل زر القائمة ضخم جداً */
-    .menu-btn { font-size: 40px; cursor: pointer; padding: 40px; color: #fff; text-shadow: 0 0 10px #3498db; }
-
-    /* القائمة الجانبية: غطاء كامل للشاشة (Full Screen) */
+    /* جعل القائمة الجانبية غطاءً كاملاً للشاشة عند الفتح */
     .sidebar { 
-        display: none; position: fixed; top: 0; right: 0; width: 100%; height: 100%; 
-        background: #000; padding: 100px; z-index: 1000; box-sizing: border-box;
+        display: none; 
+        position: fixed; 
+        top: 0; 
+        right: 0; 
+        width: 100%;       /* تغطي العرض بالكامل */
+        height: 100vh;     /* تغطي الارتفاع بالكامل */
+        background: #000; 
+        padding: 80px;     /* مسافات كبيرة لجعل العناصر تظهر بشكل "ضخم" */
+        z-index: 9999;     /* لتظهر فوق كل شيء */
+        box-sizing: border-box;
     }
-    .menu-item { padding: 40px 0; font-size: 50px; color: #fff; cursor: pointer; text-decoration: none; display: block; font-weight: bold; }
+
+    /* تكبير نصوص القائمة لتصبح واضحة جداً وضخمة */
+    .menu-item { 
+        padding: 40px 0; 
+        font-size: 60px;   /* حجم خط كبير جداً */
+        color: #fff; 
+        cursor: pointer; 
+        text-decoration: none; 
+        display: block; 
+        font-weight: 800;  /* خط عريض */
+    }
+    
     .menu-item:hover { color: #3498db; }
 
-    /* الشبكة: بطاقات عملاقة جداً */
-    .grid-container { 
-        display: grid; 
-        grid-template-columns: repeat(auto-fill, minmax(450px, 1fr)); /* تكبير العرض */
-        gap: 60px; 
-        padding: 60px; 
-    }
-    .card { 
-        background: #111; border-radius: 30px; padding: 30px; text-align: center; 
-        border: 2px solid #222;
-    }
-    .card img { width: 100%; height: 600px; object-fit: cover; border-radius: 20px; }
-    .card h4 { font-size: 30px; margin: 20px 0; }
-    
-    /* زر مشاهدة عملاق */
-    .btn-watch { 
-        background: #3498db; color: white; padding: 25px; width: 100%; 
-        border-radius: 15px; font-size: 24px; cursor: pointer; text-decoration: none; display: block;
+    /* تكبير زر الإغلاق */
+    .close-btn { 
+        font-size: 80px; 
+        cursor: pointer; 
+        color: white; 
+        position: absolute; 
+        top: 20px; 
+        right: 40px; 
     }
 </style>
+
 
 
 
@@ -47,17 +54,14 @@
     <div class="menu-btn" onclick="toggleSidebar()">☰ Noxa</div>
 
   <div class="sidebar" id="mySidebar">
-    <div class="menu-item" onclick="toggleSidebar()" style="text-align: left; padding: 10px;">✕</div>
-    <h2>Noxa</h2>
+    <div class="close-btn" onclick="toggleSidebar()">×</div>
+    <div style="font-size: 80px; margin-bottom: 50px;">Noxa</div>
     <a href="index.html" class="menu-item">🏠 الرئيسية</a>
     <a href="#" class="menu-item">🎬 المسلسلات والأفلام</a>
     <a href="#" class="menu-item">📖 المانجا والمانهوا</a>
-    <a href="#" class="menu-item">📚 الروايات</a>
-    <a href="#" class="menu-item">📺 القنوات</a>
-    <a href="#" class="menu-item">🎶 قوائم التشغيل</a>
-    <a href="#" class="menu-item">🕒 سجل المشاهدة</a>
     <a href="#" class="menu-item">⚙️ الإعدادات</a>
 </div>
+
 
 
     <div class="main-content">
