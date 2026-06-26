@@ -4,28 +4,35 @@
     <meta charset="UTF-8">
     <title>Noxa</title>
     <style>
-        body { background-color: #f4f7f6; color: #333; font-family: sans-serif; margin: 0; padding: 0; }
-        header { text-align: center; padding: 50px 20px; background: #bdc3c7; color: #2c3e50; }
-        h1 { color: #3498db; }
+        body { 
+            background-color: #0a0a0a; 
+            color: #dcdde1; 
+            font-family: 'Segoe UI', Tahoma, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+        }
+        header { 
+            text-align: center; 
+            padding: 50px 20px; 
+            background: linear-gradient(to bottom, #1c1c1c, #0a0a0a); 
+            border-bottom: 2px solid #3498db;
+        }
+        h1 { color: #3498db; font-size: 2.5em; margin: 0; }
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 25px; padding: 30px; }
-        .card { background: #fff; border-radius: 10px; overflow: hidden; border: 1px solid #dcdde1; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .card { 
+            background: #161616; 
+            border-radius: 10px; 
+            overflow: hidden; 
+            border: 1px solid #333; 
+            transition: 0.3s; 
+        }
+        .card:hover { border-color: #3498db; transform: scale(1.03); }
         .card img { width: 100%; height: 280px; object-fit: cover; }
         .card-body { padding: 15px; }
-        .btn { display: block; text-align: center; background: #3498db; color: white; padding: 10px; text-decoration: none; border-radius: 5px; }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>Noxa</h1>
-    </header>
-    <div class="grid">
-        <div class="card">
-            <img src="https://m.media-amazon.com/images/M/MV5BMDk4Y2U5MmMtMzA3My00NGFiLWI2YjItYTI2Y2Q0OWM5NTE1XkEyXkFqcGdeQXVyMTA1MTA0MTEw._V1_.jpg" alt="The Vampire Diaries">
-            <div class="card-body">
-                <h3>The Vampire Diaries</h3>
-                <a href="#" class="btn">مشاهدة الآن</a>
-            </div>
-        </div>
-    </div>
-</body>
-</html>
+        .card h3 { color: #bdc3c7; margin-bottom: 15px; }
+        .btn { 
+            display: block; 
+            text-align: center; 
+            background: #3498db; 
+            color: #fff; 
+            padding: 10px;
