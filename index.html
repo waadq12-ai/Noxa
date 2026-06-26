@@ -10,12 +10,25 @@
     .sidebar { 
         display: none; position: fixed; top: 0; right: 0; width: 280px; height: 100%; 
         background: #111; padding: 40px 20px; z-index: 1000; border-left: 1px solid #333;
-    }
-    .menu-item { 
-        padding: 20px 10px; font-size: 18px; color: #ccc; 
-        cursor: pointer; text-decoration: none; display: block; border-radius: 8px;
-    }
-    .menu-item:hover { background: #222; color: #fff; }
+   .menu-btn {
+    font-size: 36px;       /* تكبير حجم الرمز/الأيقونة */
+    cursor: pointer;
+    padding: 25px;         /* زيادة مساحة الضغط حول الزر لتسهيل المهمة */
+    color: #fff;           /* لون أبيض ليكون بارزاً */
+    display: inline-block;
+    background: #1a1a1a;   /* إضافة خلفية خفيفة للزر لتمييزه */
+    border-radius: 12px;   /* حواف دائرية ليعطي شكلاً عصرياً */
+    margin: 15px;          /* مسافة عن حواف الشاشة */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* إضافة ظل خفيف ليبرز الزر عن الخلفية */
+    transition: transform 0.2s; /* إضافة تأثير حركة بسيط عند الضغط */
+}
+
+/* تأثير عند مرور الماوس أو اللمس */
+.menu-btn:active {
+    transform: scale(0.95);
+    background: #3498db;
+}
+
 
     /* الشبكة: متوازنة وتظهر بوضوح */
     .grid-container { 
