@@ -2,87 +2,53 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Noxa</title>
     <style>
-    body { background-color: #0c0c0c !important; color: white !important; margin: 0; font-family: sans-serif; }
+        /* التنسيق العام */
+        body { background-color: #0c0c0c !important; color: white !important; margin: 0; font-family: sans-serif; }
 
-    /* القائمة الجانبية: متوازنة ومريحة */
-    .sidebar { 
-        display: none; position: fixed; top: 0; right: 0; width: 280px; height: 100%; 
-        background: #111; padding: 40px 20px; z-index: 1000; border-left: 1px solid #333;
-   .menu-btn {
-    font-size: 36px;       /* تكبير حجم الرمز/الأيقونة */
-    cursor: pointer;
-    padding: 25px;         /* زيادة مساحة الضغط حول الزر لتسهيل المهمة */
-    color: #fff;           /* لون أبيض ليكون بارزاً */
-    display: inline-block;
-    background: #1a1a1a;   /* إضافة خلفية خفيفة للزر لتمييزه */
-    border-radius: 12px;   /* حواف دائرية ليعطي شكلاً عصرياً */
-    margin: 15px;          /* مسافة عن حواف الشاشة */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* إضافة ظل خفيف ليبرز الزر عن الخلفية */
-    transition: transform 0.2s; /* إضافة تأثير حركة بسيط عند الضغط */
-}
+        /* تنسيق الزر الكبير والواضح */
+        .header-container { padding: 30px; }
+        .menu-btn { 
+            font-size: 40px !important; 
+            font-weight: bold !important; 
+            cursor: pointer; 
+            color: #ffffff !important; 
+            padding: 25px 50px !important; 
+            background-color: #1a1a1a !important; 
+            border-radius: 20px !important; 
+            display: inline-block !important; 
+            border: 2px solid #3498db !important;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5) !important;
+        }
 
-/* تأثير عند مرور الماوس أو اللمس */
-.menu-btn:active {
-    transform: scale(0.95);
-    background: #3498db;
-}
-
-
-    /* الشبكة: متوازنة وتظهر بوضوح */
-    .grid-container { 
-        display: grid; 
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
-        gap: 25px; 
-        padding: 25px; 
-    }
-    .card { 
-        background: #161616; border-radius: 12px; padding: 12px; text-align: center;
-    }
-    .card img { width: 100%; height: 280px; object-fit: cover; border-radius: 8px; }
-    
-    /* زر المشاهدة: حجم مريح للضغط */
-    .btn-watch { 
-        background: #3498db; color: white; padding: 10px 0; width: 100%; 
-        border: none; border-radius: 6px; font-size: 14px; cursor: pointer; margin-top: 10px;
-    }
-</style>
-
-
-
-
-
+        /* القائمة الجانبية المتوازنة */
+        .sidebar { 
+            display: none; position: fixed; top: 0; right: 0; width: 300px; height: 100%; 
+            background: #111; padding: 40px 20px; z-index: 1000; border-left: 2px solid #3498db;
+        }
+        .menu-item { 
+            padding: 25px 15px; font-size: 22px; color: #fff; 
+            cursor: pointer; text-decoration: none; display: block; border-bottom: 1px solid #222;
+        }
+        .menu-item:hover { background: #222; color: #3498db; }
+        .close-btn { font-size: 40px; cursor: pointer; color: white; margin-bottom: 20px; }
+    </style>
 </head>
 <body>
 
-    <div class="menu-btn" onclick="toggleSidebar()">☰ Noxa</div>
-
-  <div class="sidebar" id="mySidebar">
-    <div class="close-btn" onclick="toggleSidebar()">×</div>
-    <div style="font-size: 80px; margin-bottom: 50px;">Noxa</div>
-    <a href="index.html" class="menu-item">🏠 الرئيسية</a>
-    <a href="#" class="menu-item">🎬 المسلسلات والأفلام</a>
-    <a href="#" class="menu-item">📖 المانجا والمانهوا</a>
-    <a href="#" class="menu-item">⚙️ الإعدادات</a>
-</div>
-
-
-
-    <div class="main-content">
-        <h1>مرحباً في Noxa</h1>
-        <div class="grid-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 20px; padding: 20px;">
-    
-    <div class="card" style="background: #1a1a1a; border-radius: 10px; padding: 10px; text-align: center;">
-        <img src="رابط_صورة_المسلسل" style="width: 100%; height: 250px; object-fit: cover; border-radius: 5px;">
-        <h4 style="margin: 10px 0;">اسم المسلسل</h4>
-        <button style="background: #3498db; border: none; padding: 10px; width: 100%; color: white; border-radius: 5px;">مشاهدة</button>
+    <div class="header-container">
+        <div class="menu-btn" onclick="toggleSidebar()">☰ Noxa</div>
     </div>
 
-</div>
-
+    <div class="sidebar" id="mySidebar">
+        <div class="close-btn" onclick="toggleSidebar()">✕ إغلاق</div>
+        <a href="index.html" class="menu-item">🏠 الرئيسية</a>
+        <a href="#" class="menu-item">🎬 المسلسلات والأفلام</a>
+        <a href="#" class="menu-item">📖 المانجا والمانهوا</a>
+        <a href="#" class="menu-item">⚙️ الإعدادات</a>
     </div>
-
 
     <script>
         function toggleSidebar() {
@@ -96,7 +62,4 @@
     </script>
 </body>
 </html>
-
-
-
 
