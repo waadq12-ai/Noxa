@@ -4,33 +4,35 @@
     <meta charset="UTF-8">
     <title>Noxa</title>
     <style>
-    body { background-color: #0c0c0c !important; color: white !important; margin: 0; font-family: sans-serif; }
-    
-    /* جعل القائمة الجانبية أعرض وأكبر */
+    body { background-color: #0c0c0c !important; color: white !important; margin: 0; font-family: sans-serif; overflow-x: hidden; }
+
+    /* القائمة الجانبية: جعلناها تغطي مساحة أكبر وخطوطها ضخمة */
     .sidebar { 
-        display: none; position: fixed; top: 0; right: 0; width: 320px; height: 100%; 
-        background: #161616; padding: 40px; z-index: 1000; border-left: 2px solid #3498db;
+        display: none; position: fixed; top: 0; right: 0; width: 400px; height: 100%; 
+        background: rgba(10, 10, 10, 0.95); padding: 60px; z-index: 1000; border-left: 3px solid #3498db;
     }
-    .sidebar h2 { font-size: 28px; margin-bottom: 30px; }
-    .menu-item { padding: 20px 0; font-size: 20px; color: #eee; cursor: pointer; text-decoration: none; display: block; }
-    
-    /* جعل زر القائمة أوضح */
-    .menu-btn { font-size: 30px; cursor: pointer; padding: 30px; color: #3498db; font-weight: bold; }
-    
-    /* تكبير مساحة عرض الأفلام */
+    .menu-item { padding: 30px 0; font-size: 26px; color: #fff; cursor: pointer; text-decoration: none; display: block; }
+
+    /* الشبكة: جعلنا البطاقات عملاقة */
     .grid-container { 
         display: grid; 
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
-        gap: 40px; 
-        padding: 40px; 
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
+        gap: 50px; 
+        padding: 50px; 
     }
     .card { 
-        background: #1a1a1a; border-radius: 15px; padding: 15px; text-align: center; 
-        transition: transform 0.3s;
+        background: #111; border-radius: 20px; padding: 20px; text-align: center; 
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
-    .card:hover { transform: scale(1.05); }
-    .card img { width: 100%; height: 350px; object-fit: cover; border-radius: 10px; }
+    .card img { width: 100%; height: 450px; object-fit: cover; border-radius: 15px; }
+    
+    /* زر المشاهدة أصبح ضخماً في أسفل البطاقة */
+    .btn-watch { 
+        background: #3498db; color: white; padding: 15px; width: 100%; 
+        border: none; border-radius: 10px; font-size: 18px; margin-top: 15px; cursor: pointer;
+    }
 </style>
+
 
 </head>
 <body>
