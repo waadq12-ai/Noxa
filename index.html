@@ -5,36 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Noxa</title>
     <style>
-        /* التنسيق العام */
-        body { background-color: #0c0c0c !important; color: white !important; margin: 0; font-family: sans-serif; }
+    body { background-color: #0c0c0c !important; color: white !important; margin: 0; font-family: sans-serif; }
 
-        /* تنسيق الزر الكبير والواضح */
-        .header-container { padding: 30px; }
-        .menu-btn { 
-            font-size: 40px !important; 
-            font-weight: bold !important; 
-            cursor: pointer; 
-            color: #ffffff !important; 
-            padding: 25px 50px !important; 
-            background-color: #1a1a1a !important; 
-            border-radius: 20px !important; 
-            display: inline-block !important; 
-            border: 2px solid #3498db !important;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5) !important;
-        }
+    /* زر Noxa المتوازن: حجم مريح للعين وللضغط */
+    .menu-btn { 
+        font-size: 20px !important; 
+        padding: 15px 30px !important; 
+        cursor: pointer; 
+        background: #1a1a1a; 
+        border: 1px solid #3498db; 
+        border-radius: 12px; 
+        display: inline-block; 
+        margin: 15px;
+    }
 
-        /* القائمة الجانبية المتوازنة */
-        .sidebar { 
-            display: none; position: fixed; top: 0; right: 0; width: 300px; height: 100%; 
-            background: #111; padding: 40px 20px; z-index: 1000; border-left: 2px solid #3498db;
-        }
-        .menu-item { 
-            padding: 25px 15px; font-size: 22px; color: #fff; 
-            cursor: pointer; text-decoration: none; display: block; border-bottom: 1px solid #222;
-        }
-        .menu-item:hover { background: #222; color: #3498db; }
-        .close-btn { font-size: 40px; cursor: pointer; color: white; margin-bottom: 20px; }
-    </style>
+    /* القائمة الجانبية: متوازنة */
+    .sidebar { 
+        display: none; position: fixed; top: 0; right: 0; width: 250px; height: 100%; 
+        background: #111; padding: 20px; z-index: 1000;
+    }
+    .menu-item { padding: 15px; font-size: 18px; color: white; text-decoration: none; display: block; }
+
+    /* بطاقة المسلسل المتوازنة */
+    .card { 
+        background: #161616; border-radius: 12px; padding: 12px; 
+        width: 160px; text-align: center; margin: 15px; 
+    }
+    .btn-watch { 
+        background: #3498db; color: white; padding: 8px; width: 100%; 
+        border: none; border-radius: 6px; font-size: 14px; margin-top: 8px; cursor: pointer; 
+    }
+</style>
+
 </head>
 <body>
 
