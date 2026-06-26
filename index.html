@@ -7,37 +7,44 @@
     <style>
         body { background-color: #0c0c0c; color: white; margin: 0; font-family: sans-serif; }
         
-        /* الزر */
+        /* زر القائمة */
         .menu-btn { font-size: 20px; padding: 15px; cursor: pointer; color: #fff; background: #222; display: inline-block; margin: 15px; border-radius: 12px; border: 1px solid #3498db; }
         
+        /* القائمة الجانبية */
+        .sidebar { display: none; position: fixed; top: 0; right: 0; width: 250px; height: 100%; background: #111; padding: 20px; z-index: 1000; border-left: 1px solid #333; }
+        .menu-item { display: block; padding: 15px; color: white; text-decoration: none; font-size: 18px; border-bottom: 1px solid #222; }
+        .close-btn { cursor: pointer; color: #3498db; padding: 10px; font-size: 20px; }
+
         /* الشبكة */
         .grid-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 15px; }
-        
         .card { background: #161616; padding: 10px; border-radius: 12px; text-align: center; }
-        
         .poster { background: #333; height: 160px; border-radius: 8px; margin-bottom: 8px; }
-        
         .btn-watch { background: #3498db; color: white; padding: 10px; border: none; border-radius: 6px; width: 100%; cursor: pointer; }
     </style>
 </head>
 <body>
 
-    <div class="menu-btn">☰ Noxa</div>
+    <div class="menu-btn" onclick="document.getElementById('mySidebar').style.display='block'">☰ القائمة</div>
+
+    <div class="sidebar" id="mySidebar">
+        <div class="close-btn" onclick="document.getElementById('mySidebar').style.display='none'">✕ إغلاق</div>
+        <a href="#" class="menu-item">🏠 الرئيسية</a>
+        <a href="#" class="menu-item">🎬 المسلسلات والأفلام</a>
+        <a href="#" class="menu-item">📖 المانجا والمانهوا</a>
+        <a href="#" class="menu-item">⚙️ الإعدادات</a>
+    </div>
 
     <div class="grid-container">
-        
         <div class="card">
             <div class="poster"></div>
             <h4>مسلسل 1</h4>
             <button class="btn-watch">مشاهدة</button>
         </div>
-
         <div class="card">
             <div class="poster"></div>
             <h4>مسلسل 2</h4>
             <button class="btn-watch">مشاهدة</button>
         </div>
-
     </div>
 
 </body>
