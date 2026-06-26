@@ -3,23 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Noxa</title>
-    <style>
-        body { background-color: #0c0c0c; color: white; margin: 0; font-family: sans-serif; }
-        
-        /* زر فتح القائمة */
-        .menu-btn { font-size: 24px; cursor: pointer; padding: 20px; color: white; }
-        
-        /* القائمة الجانبية العائمة */
-        .sidebar { 
-            display: none; /* مخفية في البداية */
-            position: fixed; top: 0; right: 0; width: 250px; height: 100%; 
-            background: #111; padding: 20px; z-index: 1000; border-left: 1px solid #333;
-        }
-        .menu-item { padding: 15px 0; color: #ccc; cursor: pointer; }
-        
-        .main-content { padding: 20px; }
-        .hero { height: 300px; background: #1a1a1a; border-radius: 20px; padding: 20px; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -28,25 +12,14 @@
     <div class="sidebar" id="mySidebar">
         <div class="menu-item" onclick="toggleSidebar()">✕ إغلاق</div>
         <h2>Noxa</h2>
-        <div class="menu-item">🏠 الرئيسية</div>
-        <div class="menu-item">🎬 المسلسلات والأفلام</div>
+        <a href="index.html" class="menu-item">🏠 الرئيسية</a>
+        <a href="series.html" class="menu-item">🎬 المسلسلات والأفلام</a>
     </div>
 
     <div class="main-content">
-        <div class="hero">
-            <h1>مرحباً في Noxa</h1>
-        </div>
+        <h1>مرحباً في Noxa</h1>
     </div>
 
-    <script>
-        function toggleSidebar() {
-            var sidebar = document.getElementById("mySidebar");
-            if (sidebar.style.display === "block") {
-                sidebar.style.display = "none";
-            } else {
-                sidebar.style.display = "block";
-            }
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
