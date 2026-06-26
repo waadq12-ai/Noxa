@@ -2,47 +2,40 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Noxa</title>
     <style>
         body { background-color: #0c0c0c; color: white; margin: 0; font-family: sans-serif; }
-        .menu-btn { font-size: 20px; padding: 15px; cursor: pointer; color: #3498db; }
         
-        /* تصميم القائمة */
-        .sidebar { 
-            display: none; position: fixed; top: 0; right: 0; width: 250px; height: 100%; 
-            background: #111; padding: 20px; z-index: 1000; border-left: 1px solid #333;
-        }
-        .menu-item { display: block; padding: 15px; color: white; text-decoration: none; border-bottom: 1px solid #222; }
+        /* زر القائمة */
+        .menu-btn { font-size: 20px; padding: 15px; cursor: pointer; color: #fff; background: #222; display: inline-block; margin: 10px; border-radius: 8px; }
+        
+        /* القائمة الجانبية */
+        .sidebar { display: none; position: fixed; top: 0; right: 0; width: 250px; height: 100%; background: #111; padding: 20px; z-index: 1000; border-left: 2px solid #3498db; }
+        .menu-item { display: block; padding: 15px; color: white; text-decoration: none; font-size: 18px; }
 
-        /* شبكة المسلسلات */
-        .grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; padding: 20px; }
-        .card { background: #161616; border-radius: 10px; padding: 10px; text-align: center; }
-        .btn-watch { background: #3498db; color: white; padding: 10px; border: none; border-radius: 5px; width: 100%; cursor: pointer; }
+        /* البطاقات */
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; padding: 15px; }
+        .card { background: #161616; padding: 10px; border-radius: 10px; text-align: center; }
+        .btn-watch { background: #3498db; color: white; padding: 8px; border: none; border-radius: 5px; width: 100%; margin-top: 5px; cursor: pointer; }
     </style>
 </head>
 <body>
 
-    <div class="menu-btn" onclick="document.getElementById('mySidebar').style.display='block'">☰ Noxa</div>
+    <div class="menu-btn" onclick="document.getElementById('mySidebar').style.display='block'">☰ القائمة</div>
 
     <div class="sidebar" id="mySidebar">
-        <div class="menu-item" onclick="document.getElementById('mySidebar').style.display='none'">✕ إغلاق</div>
+        <div class="menu-item" onclick="document.getElementById('mySidebar').style.display='none'" style="cursor:pointer; color:#3498db;">✕ إغلاق</div>
         <a href="#" class="menu-item">🏠 الرئيسية</a>
         <a href="#" class="menu-item">🎬 المسلسلات</a>
     </div>
 
     <div class="grid-container">
         <div class="card">
-            <div style="background:#444; height:150px; border-radius:5px;"></div>
-            <h4>مسلسل 1</h4>
+            <div style="background:#333; height:120px; border-radius:5px;"></div>
+            <h4 style="font-size: 14px;">اسم المسلسل</h4>
             <button class="btn-watch">مشاهدة</button>
         </div>
     </div>
-<div class="card">
-    <div style="background:#444; height:150px; border-radius:5px;"></div>
-    <h4>اسم المسلسل</h4>
-    <button class="btn-watch">مشاهدة</button>
-</div>
 
 </body>
 </html>
