@@ -1,10 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="ar" dir="rtl">
 <head>
-    <title>Noxa</title>
+    <meta charset="UTF-8">
+    <title>Noxa Entertainment</title>
+    <style>
+        body { background-color: #f4f7f6; color: #333; font-family: sans-serif; margin: 0; padding: 0; }
+        header { text-align: center; padding: 50px 20px; background: #bdc3c7; color: #2c3e50; }
+        h1 { color: #3498db; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 25px; padding: 30px; }
+        .card { background: #fff; border-radius: 10px; overflow: hidden; border: 1px solid #dcdde1; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .card img { width: 100%; height: 280px; object-fit: cover; }
+        .card-body { padding: 15px; }
+        .btn { display: block; text-align: center; background: #3498db; color: white; padding: 10px; text-decoration: none; border-radius: 5px; }
+    </style>
 </head>
 <body>
-    <h1>مرحباً بكم في موقع Noxa</h1>
+    <header>
+        <h1>Noxa Entertainment</h1>
+    </header>
+    <div class="grid">
+        <div class="card">
+            <img src="https://m.media-amazon.com/images/M/MV5BMDk4Y2U5MmMtMzA3My00NGFiLWI2YjItYTI2Y2Q0OWM5NTE1XkEyXkFqcGdeQXVyMTA1MTA0MTEw._V1_.jpg" alt="The Vampire Diaries">
+            <div class="card-body">
+                <h3>The Vampire Diaries</h3>
+                <a href="#" class="btn">مشاهدة الآن</a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
-
