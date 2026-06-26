@@ -2,76 +2,42 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Noxa</title>
     <style>
         body { background-color: #0c0c0c; color: white; margin: 0; font-family: sans-serif; }
         
-        /* زر القائمة */
-        .menu-btn { font-size: 18px; padding: 12px 20px; cursor: pointer; color: #fff; background: #222; display: inline-block; margin: 15px; border-radius: 8px; border: 1px solid #444; }
+        /* الزر */
+        .menu-btn { font-size: 18px; padding: 12px; cursor: pointer; color: #fff; background: #222; display: inline-block; margin: 15px; border-radius: 8px; }
         
-        /* القائمة الجانبية المحدثة */
-        .sidebar { display: none; position: fixed; top: 0; right: 0; width: 260px; height: 100%; background: #111; padding: 30px 20px; z-index: 1000; border-left: 2px solid #3498db; }
-        .menu-item { display: block; padding: 18px 0; color: #ddd; text-decoration: none; font-size: 18px; border-bottom: 1px solid #222; }
-        .menu-item:hover { color: #3498db; }
-
-        /* الشبكة (Grid) لإضافة مئات المسلسلات */
-        .grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; padding: 15px; }
+        /* الشبكة - لترتيب المسلسلات بذكاء */
+        .grid-container { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 15px; 
+            padding: 15px; 
+        }
+        
         .card { background: #161616; padding: 10px; border-radius: 10px; text-align: center; }
-        .btn-watch { background: #3498db; color: white; padding: 8px; border: none; border-radius: 5px; width: 100%; margin-top: 8px; cursor: pointer; }
+        
+        /* تصحيح شكل الصورة والزر */
+        .poster { background: #333; height: 150px; border-radius: 8px; margin-bottom: 8px; }
+        .btn-watch { background: #3498db; color: white; padding: 10px; border: none; border-radius: 5px; width: 100%; cursor: pointer; }
     </style>
 </head>
 <body>
 
-    <div class="menu-btn" onclick="document.getElementById('mySidebar').style.display='block'">☰ القائمة</div>
-
-    <div class="sidebar" id="mySidebar">
-        <div class="menu-item" onclick="document.getElementById('mySidebar').style.display='none'" style="cursor:pointer; color:#3498db;">✕ إغلاق</div>
-        <a href="#" class="menu-item">🏠 الرئيسية</a>
-        <a href="#" class="menu-item">🎬 المسلسلات والأفلام</a>
-        <a href="#" class="menu-item">📖 المانجا والمانهوا</a>
-        <a href="#" class="menu-item">📚 الروايات</a>
-        <a href="#" class="menu-item">📺 القنوات</a>
-        <a href="#" class="menu-item">⚙️ الإعدادات</a>
-    </div>
+    <div class="menu-btn" onclick="alert('القائمة ستضاف لاحقاً')">☰ القائمة</div>
 
     <div class="grid-container">
         <div class="card">
-            <div style="background:#333; height:150px; border-radius:5px; margin-bottom:8px;"></div>
-            <h4 style="font-size: 13px; margin: 0;">اسم المسلسل</h4>
+            <div class="poster"></div>
+            <h4>مسلسل 1</h4>
             <button class="btn-watch">مشاهدة</button>
         </div>
-        
         <div class="card">
-            <div style="background:#333; height:150px; border-radius:5px; margin-bottom:8px;"></div>
-            <h4 style="font-size: 13px; margin: 0;">اسم المسلسل 2</h4>
-            <button class="btn-watch">مشاهدة</button>
-            <div class="card">
-             style="background:#333; height:150px; border-radius:5px; margin-bottom:8px;"></div>
-            <h4 style="font-size: 13px; margin: 0;">اسم المسلسل 2</h4>
-            <button class="btn-watch">مشاهدة</button>
-        style="background:#333; height:150px; border-radius:5px; margin-bottom:8px;"></div>
-            <h4 style="font-size: 13px; margin: 0;">اسم المسلسل 2</h4>
-            <button class="btn-watch">مشاهدة</button>
-            style="background:#333; height:150px; border-radius:5px; margin-bottom:8px;"></div>
-            <h4 style="font-size: 13px; margin: 0;">اسم المسلسل 2</h4>
-            <button class="btn-watch">مشاهدة</button>
-            style="background:#333; height:150px; border-radius:5px; margin-bottom:8px;"></div>
-            <h4 style="font-size: 13px; margin: 0;">اسم المسلسل 2</h4>
-            <button class="btn-watch">مشاهدة</button>
-            style="background:#333; height:150px; border-radius:5px; margin-bottom:8px;"></div>
-            <h4 style="font-size: 13px; margin: 0;">اسم المسلسل 2</h4>
-            <button class="btn-watch">مشاهدة</button>
-            style="background:#333; height:150px; border-radius:5px; margin-bottom:8px;"></div>
-            <h4 style="font-size: 13px; margin: 0;">اسم المسلسل 2</h4>
-            <button class="btn-watch">مشاهدة</button>
-            style="background:#333; height:150px; border-radius:5px; margin-bottom:8px;"></div>
-            <h4 style="font-size: 13px; margin: 0;">اسم المسلسل 2</h4>
-            <button class="btn-watch">مشاهدة</button>
-            style="background:#333; height:150px; border-radius:5px; margin-bottom:8px;"></div>
-            <h4 style="font-size: 13px; margin: 0;">اسم المسلسل 2</h4>
-            <button class="btn-watch">مشاهدة</button>
-            style="background:#333; height:150px; border-radius:5px; margin-bottom:8px;"></div>
-            <h4 style="font-size: 13px; margin: 0;">اسم المسلسل 2</h4>
+            <div class="poster"></div>
+            <h4>مسلسل 2</h4>
             <button class="btn-watch">مشاهدة</button>
         </div>
     </div>
