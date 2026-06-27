@@ -8,60 +8,23 @@
 
     <aside class="w-72 bg-black border-l border-gray-800 p-8">
         <h2 class="text-3xl font-bold mb-12">Noxa</h2>
-        <nav class="space-y-6">
-    <a href="settings.html" class="block text-2xl font-bold text-gray-400 hover:text-white">الإعدادات العامة</a>
-    
-    <a href="profile.html" class="block text-2xl font-bold text-gray-400 hover:text-white">الملف الشخصي</a>
-    
-    <a href="history.html" class="block text-2xl font-bold text-gray-400 hover:text-white">سجل المشاهدة</a>
-    
-    <button onclick="logout()" class="block text-2xl text-red-500 font-bold mt-10">
-        تسجيل الخروج
-    </button>
-</nav>
-
+        <nav class="space-y-8">
+            <a href="settings.html" class="block text-2xl font-bold text-white">الإعدادات العامة</a>
+            <a href="profile.html" class="block text-2xl text-gray-400 hover:text-white">الملف الشخصي</a>
+            <a href="history.html" class="block text-2xl text-gray-400 hover:text-white">سجل المشاهدة</a>
+            <button onclick="logout()" class="block text-2xl text-red-500 font-bold hover:text-red-400">تسجيل الخروج</button>
+        </nav>
     </aside>
 
-   <div class="bg-gray-900 p-10 rounded-3xl mt-10 max-w-2xl">
-    <h2 class="text-3xl font-bold mb-6">تعديل الملف الشخصي</h2>
-    
-    <label class="text-xl block mb-2">اسم العرض</label>
-    <input type="text" id="editName" class="w-full p-4 mb-6 rounded-xl bg-black text-white text-xl">
-    
-    <label class="text-xl block mb-2">نبذة عني</label>
-    <textarea id="editBio" class="w-full p-4 mb-6 rounded-xl bg-black text-white text-xl"></textarea>
-    
-    <button onclick="saveProfile()" class="bg-blue-600 px-8 py-4 rounded-xl text-xl font-bold">حفظ التغييرات</button>
-</div>
-
-<script>
-    // تحميل البيانات عند فتح الصفحة
-    const user = localStorage.getItem('currentUser');
-    const profile = JSON.parse(localStorage.getItem('profile_' + user)) || { name: user, bio: "" };
-    
-    document.getElementById('editName').value = profile.name;
-    document.getElementById('editBio').value = profile.bio;
-
-    // حفظ البيانات
-    function saveProfile() {
-        const newName = document.getElementById('editName').value;
-        const newBio = document.getElementById('editBio').value;
+    <div class="flex-1 p-12">
+        <h1 class="text-5xl font-bold mb-10">الإعدادات العامة</h1>
         
-        localStorage.setItem('profile_' + user, JSON.stringify({ name: newName, bio: newBio }));
-        alert("تم حفظ التغييرات!");
-        location.reload();
-    }
-</script>
-
+        <div class="bg-gray-900 p-10 rounded-3xl max-w-2xl">
+            <p class="text-2xl text-gray-300">هنا يمكنك التحكم في إعدادات التطبيق وتفضيلات العرض.</p>
+        </div>
+    </div>
 
     <script>
-        const user = localStorage.getItem('currentUser');
-        if (user) {
-            document.getElementById('userNameDisplay').innerText = user;
-        } else {
-            window.location.href = "login.html";
-        }
-
         function logout() {
             localStorage.removeItem('currentUser');
             window.location.href = "login.html";
