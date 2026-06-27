@@ -35,20 +35,21 @@
 <body>
     <button onclick="addToHistory('الحلقة رقم 1')">شاهدت الحلقة 1</button>
 
-   <script>
-    window.onload = function() {
-        // سيأخذ اسم المسلسل والحلقة من عنوان الصفحة (العنوان الموجود في الـ title)
-        const episodeInfo = document.title; 
-        
-        let history = JSON.parse(localStorage.getItem('myHistory')) || [];
-        
-        // التحقق من عدم التكرار
-        if (!history.includes(episodeInfo)) {
-            history.push(episodeInfo);
-            localStorage.setItem('myHistory', JSON.stringify(history));
-        }
-    };
-</script>
+      <script>
+        window.onload = function() {
+            let title = document.title; 
+            let history = JSON.parse(localStorage.getItem('myHistory')) || [];
+            
+            // التحقق من عدم التكرار
+            if (!history.includes(title)) {
+                history.push(title);
+                localStorage.setItem('myHistory', JSON.stringify(history));
+            }
+        };
+    </script>
+</body>
+</html>
+
 
 
 </body>
