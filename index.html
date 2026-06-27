@@ -41,15 +41,24 @@
             window.location.href = "login.html";
         }
 
-        // تطبيق الإعدادات (الثيم والخط) عند فتح الصفحة
-        window.onload = () => {
-            const savedTheme = localStorage.getItem('siteTheme');
-            const savedSize = localStorage.getItem('fontSize');
-            
-            if (savedTheme) document.body.className = savedTheme + " text-white font-sans";
-            if (savedSize) document.body.style.fontSize = savedSize + "px";
-        };
-    </script>
+    // 1. عند فتح أي صفحة، طبق الإعدادات المحفوظة فوراً
+    window.onload = () => {
+        // استرجاع الإعدادات
+        const savedTheme = localStorage.getItem('siteTheme') || 'bg-black';
+        const savedSize = localStorage.getItem('fontSize') || '20';
+        
+        // تطبيق اللون على القائمة والمحتوى (الذي أعطيناهم IDs في الخطوة السابقة)
+        const sidebar = document.getElementById('sidebar');
+        const main = document.getElementById('mainContent');
+        
+        if (sidebar) sidebar.className = "w-80 border-l border-gray-800 p-10 min-h-screen " + savedTheme;
+        if (main) main.className = "flex-1 p-16 " + savedTheme;
+        
+        // تطبيق الخط
+        document.body.style.fontSize = savedSize + "px";
+    };
+</script>
+
 </body>
 </html>
 
