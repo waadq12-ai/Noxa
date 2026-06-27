@@ -2,10 +2,45 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
     <title>سجل العمليات</title>
+    <style>
+        /* الستايل المدمج */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+        nav {
+            background: #333;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        nav a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h1 { color: #333; }
+        ul { list-style-type: none; padding: 0; }
+        li {
+            background: #eee;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 4px;
+        }
+    </style>
 </head>
 <body>
+
     <nav>
         <a href="index.html">الرئيسية</a>
         <a href="settings.html">الإعدادات</a>
@@ -14,10 +49,11 @@
     <div class="container">
         <h1>سجل التاريخ</h1>
         <ul id="history-list">
-            <li>عملية رقم 1: تم حفظ البيانات بنجاح.</li>
-            <li>عملية رقم 2: تم تحديث الإعدادات.</li>
+            <li>عملية رقم 1: تم تشغيل النظام بنجاح.</li>
+            <li>عملية رقم 2: تم تعديل ملف الإعدادات.</li>
         </ul>
     </div>
+
 </body>
 </html>
 
