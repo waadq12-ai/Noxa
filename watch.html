@@ -31,20 +31,20 @@
     <button onclick="addToHistory('الحلقة رقم 1')">شاهدت الحلقة 1</button>
 
    <script>
-    // هذه الدالة تعمل بمجرد تحميل الصفحة
     window.onload = function() {
-        // ضع هنا اسم الحلقة التي يتم عرضها في هذه الصفحة
-        const currentEpisode = "الحلقة رقم 1"; 
+        // سيأخذ اسم المسلسل والحلقة من عنوان الصفحة (العنوان الموجود في الـ title)
+        const episodeInfo = document.title; 
         
         let history = JSON.parse(localStorage.getItem('myHistory')) || [];
         
-        // التحقق إذا لم تكن الحلقة مضافة مسبقاً لتجنب التكرار
-        if (!history.includes(currentEpisode)) {
-            history.push(currentEpisode);
+        // التحقق من عدم التكرار
+        if (!history.includes(episodeInfo)) {
+            history.push(episodeInfo);
             localStorage.setItem('myHistory', JSON.stringify(history));
         }
     };
 </script>
+
 
 </body>
 
