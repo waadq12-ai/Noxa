@@ -12,6 +12,21 @@
         window.location.href = "login.html";
     }
 </script>
+<button onclick="deleteAccount()" class="bg-red-600 hover:bg-red-700 text-white py-4 px-8 rounded-2xl text-xl font-bold mt-10">
+    حذف الحساب نهائياً
+</button>
+
+<script>
+    function deleteAccount() {
+        if (confirm("هل أنت متأكد؟ سيتم حذف جميع بياناتك وسجل مشاهداتك!")) {
+            const user = localStorage.getItem('currentUser');
+            localStorage.removeItem('user_' + user); // حذف بيانات المستخدم
+            localStorage.removeItem('myHistory_' + user); // حذف سجله
+            localStorage.removeItem('currentUser'); // تسجيل خروجه
+            window.location.href = "login.html"; // العودة لصفحة الدخول
+        }
+    }
+</script>
 
 </head>
 <body class="bg-black text-white min-h-screen flex text-2xl">
