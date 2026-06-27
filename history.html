@@ -60,28 +60,29 @@
         <a href="settings.html">الإعدادات</a>
     </nav>
 
-    <h1>سجل التاريخ</h1>
+    <h1>سجل المشاهدة</h1>
     <ul id="history-list"></ul>
 
-    <script>
-        function renderHistory() {
-            const list = document.getElementById('history-list');
-            const history = JSON.parse(localStorage.getItem('myHistory')) || [];
-            
-            if (history.length === 0) {
-                list.innerHTML = "<li style='text-align:center;'>لا توجد سجلات حالياً</li>";
-            } else {
-                list.innerHTML = history.map(item => `
-                    <li>
-                        <a href="watch.html?episode=${encodeURIComponent(item)}">
-                            ${item}
-                            <span>اضغط للعودة للمشاهدة</span>
-                        </a>
-                    </li>
-                `).join('');
-            }
+   <script>
+    function renderHistory() {
+        const list = document.getElementById('history-list');
+        const history = JSON.parse(localStorage.getItem('myHistory')) || [];
+        
+        if (history.length === 0) {
+            list.innerHTML = "<li style='text-align:center;'>لا توجد سجلات حالياً</li>";
+        } else {
+            list.innerHTML = history.map(item => `
+                <li>
+                    <a href="watch.html?episode=${encodeURIComponent(item)}">
+                        ${item}
+                        <span>اضغط للعودة للمشاهدة</span>
+                    </a>
+                </li>
+            `).join('');
         }
-        renderHistory();
-    </script>
+    }
+    renderHistory();
+</script>
+
 </body>
 </html>
