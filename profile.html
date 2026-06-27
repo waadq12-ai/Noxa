@@ -45,12 +45,21 @@
         const navMenu = document.getElementById('nav-menu');
 
         // تنفيذ كل دوال التحميل عند فتح الصفحة
-        window.onload = function() {
-            // 1. تحميل الإعدادات (الثيم والخط)
-            const savedTheme = localStorage.getItem('siteTheme');
-            const savedSize = localStorage.getItem('fontSize');
-            if (savedTheme) document.body.className = savedTheme + " text-white min-h-screen flex";
-            if (savedSize) document.body.style.fontSize = savedSize + "px";
+        wwindow.onload = () => {
+        // استرجاع الإعدادات
+        const savedTheme = localStorage.getItem('siteTheme') || 'bg-black';
+        const savedSize = localStorage.getItem('fontSize') || '20';
+        
+        // تطبيق اللون على القائمة والمحتوى (الذي أعطيناهم IDs في الخطوة السابقة)
+        const sidebar = document.getElementById('sidebar');
+        const main = document.getElementById('mainContent');
+        
+        if (sidebar) sidebar.className = "w-80 border-l border-gray-800 p-10 min-h-screen " + savedTheme;
+        if (main) main.className = "flex-1 p-16 " + savedTheme;
+        
+        // تطبيق الخط
+        document.body.style.fontSize = savedSize + "px";
+    };
 
             // 2. تحميل بيانات الملف الشخصي
             document.getElementById('editUsername').value = oldUser;
