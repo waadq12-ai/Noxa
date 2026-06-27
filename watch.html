@@ -37,15 +37,21 @@
 
       <script>
         window.onload = function() {
-            let title = document.title; 
-            let history = JSON.parse(localStorage.getItem('myHistory')) || [];
-            
-            // التحقق من عدم التكرار
-            if (!history.includes(title)) {
-                history.push(title);
-                localStorage.setItem('myHistory', JSON.stringify(history));
-            }
-        };
+    const user = localStorage.getItem('currentUser');
+    if (!user) return; // إذا لم يسجل دخول، لا تحفظ
+
+    let title = document.title;
+    // مفتاح التخزين سيكون مرتبطاً باسم المستخدم (مثلاً: history_Ahmed)
+    let storageKey = 'myHistory_' + user;
+    
+    let history = JSON.parse(localStorage.getItem(storageKey)) || [];
+    
+    if (!history.includes(title)) {
+        history.push(title);
+        localStorage.setItem(storageKey, JSON.stringify(history));
+    }
+};
+
     </script>
 </body>
 </html>
