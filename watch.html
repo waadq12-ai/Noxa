@@ -3,37 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مشاهدة الحلقة | موقع Noxa</title>
-    <style>
-        /* هذا التنسيق يجعل الفيديو يتناسب مع حجم شاشة الهاتف تلقائياً */
-        .video-container {
-            position: relative;
-            width: 100%;
-            padding-top: 56.25%; /* نسبة أبعاد الفيديو 16:9 */
-            background-color: #000;
-        }
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>مشاهدة الحلقة | Noxa</title>
 </head>
-<body>
+<body class="bg-[#121212] text-white min-h-screen flex flex-col items-center p-6">
 
-    <h2 style="text-align: center;">مشاهدة الحلقة الأولى - The Mentalist</h2>
+    <!-- العنوان بتصميم ضخم ومريح -->
+    <h2 class="text-3xl font-bold mb-8 text-center">مشاهدة الحلقة الأولى - The Mentalist</h2>
 
-    <div class="video-container">
-        <iframe 
-            src="https://mixdrop.top/e/039vqwj3uklrpmv" 
-            allowfullscreen 
-            scrolling="no">
-        </iframe>
+    <!-- حاوية الفيديو مع إطار وتصميم Noxa -->
+    <div class="w-full max-w-5xl bg-black p-2 rounded-2xl shadow-2xl border border-gray-800">
+        <div class="relative w-full pt-[56.25%]">
+            <iframe 
+                src="https://mixdrop.top/e/039vqwj3uklrpmv" 
+                class="absolute inset-0 w-full h-full rounded-xl"
+                allowfullscreen 
+                scrolling="no">
+            </iframe>
+        </div>
     </div>
+
+    <!-- زر العودة -->
+    <a href="series-info.html?id=mentalist" class="mt-10 bg-gray-800 hover:bg-gray-700 text-white font-bold py-3 px-8 rounded-xl transition">
+        العودة لصفحة المسلسل
+    </a>
 
 </body>
 </html>
-
