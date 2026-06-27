@@ -1,66 +1,59 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
     <meta charset="UTF-8">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-    // هذا الكود يتحقق إذا كان هناك مستخدم مسجل
-    const currentUser = localStorage.getItem('currentUser');
-    
-    // إذا لم يجد مستخدماً، يمنعه من الدخول ويرسله لصفحة تسجيل الدخول
-    if (!currentUser) {
-        window.location.href = "login.html";
-    }
-</script>
-
+        // الحماية: التحقق من تسجيل الدخول
+        if (!localStorage.getItem('currentUser')) {
+            window.location.href = "login.html";
+        }
+    </script>
 </head>
 <body class="bg-[#121212] text-white font-sans">
 
-    <!-- البنر: زيادة الارتفاع ليكون أكثر فخامة -->
     <header class="h-[450px] bg-gray-800 flex items-end p-16 shadow-2xl">
         <h1 id="title" class="text-6xl font-extrabold">جاري التحميل...</h1>
     </header>
 
-    <!-- المحتوى: توسيع المساحات -->
     <main class="p-16">
         <h2 class="text-4xl font-bold mb-10 border-r-4 border-blue-500 pr-6">حلقات الموسم الأول</h2>
         
-        <!-- قائمة الحلقات: زيادة الارتفاع وحجم الخط والزوايا -->
         <div class="bg-gray-900 p-8 rounded-3xl flex justify-between items-center shadow-lg border border-gray-800">
             <span class="text-2xl font-medium">الحلقة 1: Pilot</span>
-            
-            <!-- زر التشغيل: أكبر وأوضح -->
             <a href="watch.html" class="bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-xl font-bold text-lg transition duration-300">
                 تشغيل الحلقة
             </a>
         </div>
     </main>
-<script>
-    // تطبيق الثيم
-    function applyTheme() {
-        const color = document.getElementById('themeColor').value;
-        localStorage.setItem('siteTheme', color);
-        document.body.className = color + " text-white min-h-screen flex";
-    }
 
-    // تغيير الخط
-    function changeFontSize(amount) {
-        let currentSize = parseInt(localStorage.getItem('fontSize')) || 20;
-        let newSize = currentSize + amount;
-        localStorage.setItem('fontSize', newSize);
-        document.body.style.fontSize = newSize + "px";
-    }
+    <script>
+        // دالة تطبيق الثيم (تمت إزالة flex)
+        function applyTheme() {
+            const color = document.getElementById('themeColor')?.value || 'bg-[#121212]';
+            localStorage.setItem('siteTheme', color);
+            document.body.className = color + " text-white font-sans";
+        }
 
-    // استرجاع الإعدادات عند تحميل أي صفحة
-    window.onload = () => {
-        const savedTheme = localStorage.getItem('siteTheme');
-        const savedSize = localStorage.getItem('fontSize');
-        
-        if (savedTheme) document.body.className = savedTheme + " text-white min-h-screen flex";
-        if (savedSize) document.body.style.fontSize = savedSize + "px";
-    };
-</script>
+        // دالة تغيير الخط
+        function changeFontSize(amount) {
+            let currentSize = parseInt(localStorage.getItem('fontSize')) || 20;
+            let newSize = currentSize + amount;
+            localStorage.setItem('fontSize', newSize);
+            document.body.style.fontSize = newSize + "px";
+        }
+
+        // استرجاع الإعدادات عند تحميل الصفحة
+        window.onload = () => {
+            const savedTheme = localStorage.getItem('siteTheme');
+            const savedSize = localStorage.getItem('fontSize');
+            
+            // تطبيق اللون بدون إضافة flex
+            if (savedTheme) document.body.className = savedTheme + " text-white font-sans";
+            if (savedSize) document.body.style.fontSize = savedSize + "px";
+        };
+    </script>
 
 </body>
 </html>
+
