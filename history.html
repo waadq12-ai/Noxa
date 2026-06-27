@@ -25,25 +25,38 @@
     <h1>سجل التاريخ</h1>
     <ul id="history-list"></ul>
 
-    <script>
-        function renderHistory() {
-            const list = document.getElementById('history-list');
-            const history = JSON.parse(localStorage.getItem('myHistory')) || [];
-            
-            if (history.length === 0) {
-                list.innerHTML = "<li style='text-align:center;'>لا توجد سجلات حالياً</li>";
-            } else {
-                list.innerHTML = history.map(item => `
-                    <li>
-                        <a href="watch.html?episode=${encodeURIComponent(item)}">
-                            <span class="show-name">${item}</span>
-                            <span class="sub-text">اضغط للعودة للمشاهدة</span>
-                        </a>
-                    </li>
-                `).join('');
-            }
+   <script>
+    // 1. دالة الحذف
+    function deleteFromHistory(index) {
+        let history = JSON.parse(localStorage.getItem('myHistory')) || [];
+        history.splice(index, 1); // حذف العنصر المحدد من القائمة
+        localStorage.setItem('myHistory', JSON.stringify(history));
+        renderHistory(); // تحديث العرض
+    }
+
+    // 2. دالة العرض مع زر الحذف
+    function renderHistory() {
+        const list = document.getElementById('history-list');
+        let history = JSON.parse(localStorage.getItem('myHistory')) || [];
+        
+        if (history.length === 0) {
+            list.innerHTML = "<li style='text-align:center;'>لا توجد سجلات حالياً</li>";
+        } else {
+            list.innerHTML = history.map((item, index) => `
+                <li style="position: relative;">
+                    <a href="watch.html?episode=${encodeURIComponent(item)}" style="display:block; text-decoration:none; color:white;">
+                        <span class="show-name">${item}</span>
+                        <span class="sub-text">اضغط للعودة للمشاهدة</span>
+                    </a>
+                    <button onclick="deleteFromHistory(${index})" style="position:absolute; left:10px; top:20px; background:red; border:none; color:white; padding:5px 10px; border-radius:5px; cursor:pointer;">
+                        حذف
+                    </button>
+                </li>
+            `).join('');
         }
-        renderHistory();
-    </script>
+    }
+    renderHistory();
+</script>
+
 </body>
 </html>
