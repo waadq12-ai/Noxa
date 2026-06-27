@@ -22,9 +22,17 @@
             <div class="bg-gray-900 p-10 rounded-3xl max-w-3xl border border-gray-800">
                 <p class="text-2xl text-gray-300">تحكم في تفضيلات حسابك وتخصيص تجربتك في Noxa من هنا.</p>
                 
-                <button class="mt-10 bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-10 rounded-2xl text-xl transition">
-                    حفظ التغييرات
-                </button>
+               <button onclick="logout()" style="background:red; color:white; border:none; padding:10px; border-radius:5px; cursor:pointer;">
+    تسجيل الخروج
+</button>
+
+<script>
+    function logout() {
+        localStorage.removeItem('currentUser');
+        window.location.href = "login.html";
+    }
+</script>
+
             </div>
         </main>
     </div>
