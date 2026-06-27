@@ -2,29 +2,50 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>مشاهدة</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noxa</title>
     <style>
-        body { background: #000; color: white; font-family: sans-serif; margin: 0; }
-        .video-box { width: 100%; height: 300px; background: #111; }
-        .servers { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 20px; }
-        .btn-s { background: #222; padding: 15px; text-align: center; cursor: pointer; border: 1px solid #444; border-radius: 5px; }
-        .btn-s:hover { background: #3498db; }
+        body { background-color: #0c0c0c; color: white; margin: 0; font-family: sans-serif; }
+        
+        /* ضبط العنوان والقائمة */
+        .header { text-align: center; padding: 20px; }
+        
+        /* الشبكة (Grid) - هذا هو الجزء الأهم للترتيب */
+        .grid-container { 
+            display: grid; 
+            /* هذا السطر يضمن أن البطاقات تترتب تلقائياً بجانب بعضها */
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); 
+            gap: 15px; 
+            padding: 15px; 
+        }
+        
+        .card { background: #161616; padding: 10px; border-radius: 10px; text-align: center; }
+        
+        .poster { background: #333; height: 160px; border-radius: 8px; margin-bottom: 8px; }
+        
+        .btn-watch { background: #3498db; color: white; padding: 10px; border: none; border-radius: 6px; width: 100%; cursor: pointer; text-decoration: none; display: block; }
     </style>
 </head>
 <body>
-    <div class="video-box">
-        <iframe id="player" src="" width="100%" height="100%" allowfullscreen></iframe>
-    </div>
-    
-    <div class="servers">
-        <div class="btn-s" onclick="document.getElementById('player').src='رابط_سيرفر_1'">Vkvideo</div>
-        <div class="btn-s" onclick="document.getElementById('player').src='رابط_سيرفر_2'">Mixdrop</div>
+
+    <div class="header">
+        <h1>Noxa</h1>
     </div>
 
-    <script>
-        // رابط افتراضي عند فتح الصفحة
-        document.getElementById('player').src = 'رابط_سيرفر_1';
-    </script>
+    <div class="grid-container">
+        <div class="card">
+            <div class="poster"></div>
+            <h4>المنتاليست</h4>
+            <a href="watch.html" class="btn-watch">مشاهدة</a>
+        </div>
+        
+        <div class="card">
+            <div class="poster"></div>
+            <h4>مسلسل 2</h4>
+            <a href="watch.html" class="btn-watch">مشاهدة</a>
+        </div>
+    </div>
+
 </body>
 </html>
 
