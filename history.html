@@ -40,21 +40,33 @@
         let history = JSON.parse(localStorage.getItem('myHistory')) || [];
         
         if (history.length === 0) {
-            list.innerHTML = "<li style='text-align:center;'>لا توجد سجلات حالياً</li>";
+            list.innerHTML = "<li style='text-align:center;'>لم تشاهد أي حلقة بعد</li>";
         } else {
             list.innerHTML = history.map((item, index) => `
-                <li style="position: relative;">
-                    <a href="watch.html?episode=${encodeURIComponent(item)}" style="display:block; text-decoration:none; color:white;">
-                        <span class="show-name">${item}</span>
-                        <span class="sub-text">اضغط للعودة للمشاهدة</span>
+                <li style="display: flex; justify-content: space-between; align-items: center; background: #1c1c1c; margin: 20px 0; padding: 25px; border-radius: 20px;">
+                    <a href="watch.html?episode=${encodeURIComponent(item)}" style="text-decoration:none; color:white; font-size: 22px; font-weight:bold;">
+                        ${item}
+                        <span style="display:block; color:#aaa; font-size:16px; margin-top:5px;">اضغط للإكمال</span>
                     </a>
-                    <button onclick="deleteFromHistory(${index})" style="position:absolute; left:10px; top:20px; background:red; border:none; color:white; padding:5px 10px; border-radius:5px; cursor:pointer;">
+                    
+                    <button onclick="deleteFromHistory(${index})" style="
+                        background: #444; 
+                        color: #fff; 
+                        border: none; 
+                        padding: 15px 25px; 
+                        font-size: 16px; 
+                        font-weight: bold; 
+                        border-radius: 12px; 
+                        cursor: pointer;
+                        transition: background 0.3s;
+                    " onmouseover="this.style.background='#555'" onmouseout="this.style.background='#444'">
                         حذف
                     </button>
                 </li>
             `).join('');
         }
     }
+
     renderHistory();
 </script>
 
