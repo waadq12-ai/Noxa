@@ -30,16 +30,22 @@
 <body>
     <button onclick="addToHistory('الحلقة رقم 1')">شاهدت الحلقة 1</button>
 
-    <script>
-        function addToHistory(episodeName) {
-            let history = JSON.parse(localStorage.getItem('myHistory')) || [];
-            if (!history.includes(episodeName)) {
-                history.push(episodeName);
-                localStorage.setItem('myHistory', JSON.stringify(history));
-                alert("تمت إضافة الحلقة للسجل!"); // تنبيه للمستخدم
-            }
+   <script>
+    // هذه الدالة تعمل بمجرد تحميل الصفحة
+    window.onload = function() {
+        // ضع هنا اسم الحلقة التي يتم عرضها في هذه الصفحة
+        const currentEpisode = "الحلقة رقم 1"; 
+        
+        let history = JSON.parse(localStorage.getItem('myHistory')) || [];
+        
+        // التحقق إذا لم تكن الحلقة مضافة مسبقاً لتجنب التكرار
+        if (!history.includes(currentEpisode)) {
+            history.push(currentEpisode);
+            localStorage.setItem('myHistory', JSON.stringify(history));
         }
-    </script>
+    };
+</script>
+
 </body>
 
 </body>
