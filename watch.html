@@ -27,6 +27,20 @@
     <a href="series-info.html?id=mentalist" class="mt-10 bg-gray-800 hover:bg-gray-700 text-white font-bold py-3 px-8 rounded-xl transition">
         العودة لصفحة المسلسل
     </a>
+<body>
+    <button onclick="addToHistory('الحلقة رقم 1')">شاهدت الحلقة 1</button>
+
+    <script>
+        function addToHistory(episodeName) {
+            let history = JSON.parse(localStorage.getItem('myHistory')) || [];
+            if (!history.includes(episodeName)) {
+                history.push(episodeName);
+                localStorage.setItem('myHistory', JSON.stringify(history));
+                alert("تمت إضافة الحلقة للسجل!"); // تنبيه للمستخدم
+            }
+        }
+    </script>
+</body>
 
 </body>
 </html>
