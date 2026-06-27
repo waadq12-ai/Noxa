@@ -12,43 +12,46 @@
         <label class="block mb-4 text-2xl font-bold">اسم المستخدم:</label>
         <input type="text" id="username" class="w-full p-6 rounded-2xl bg-black border-2 border-gray-700 text-2xl mb-8 text-white">
         
-        <!-- زرين لتوضيح العملية -->
+        <label class="block mb-4 text-2xl font-bold">كلمة المرور:</label>
+        <input type="password" id="password" class="w-full p-6 rounded-2xl bg-black border-2 border-gray-700 text-2xl mb-10 text-white">
+        
         <div class="grid grid-cols-2 gap-4">
-            <button onclick="register()" class="bg-green-600 py-6 rounded-2xl text-2xl font-bold hover:bg-green-700">تسجيل حساب جديد</button>
-            <button onclick="login()" class="bg-blue-600 py-6 rounded-2xl text-2xl font-bold hover:bg-blue-700">دخول</button>
+            <button onclick="register()" class="bg-green-600 py-6 rounded-2xl text-2xl font-bold hover:bg-green-700 transition">تسجيل جديد</button>
+            <button onclick="login()" class="bg-blue-600 py-6 rounded-2xl text-2xl font-bold hover:bg-blue-700 transition">دخول</button>
         </div>
     </div>
 
     <script>
-        // دالة التسجيل (تمنع التكرار)
         function register() {
             const username = document.getElementById('username').value.trim();
-            
-            if (username === "") { alert("الرجاء إدخال اسم!"); return; }
+            const password = document.getElementById('password').value.trim();
 
-            // التحقق إذا كان اليوزر موجوداً مسبقاً
-            if (localStorage.getItem('profile_' + username)) {
-                alert("عذراً، هذا الاسم مستخدم مسبقاً! جرب اسماً آخر.");
+            if (!username || !password) { alert("الرجاء إدخال اسم المستخدم وكلمة المرور!"); return; }
+
+            if (localStorage.getItem('user_' + username)) {
+                alert("هذا المستخدم موجود مسبقاً!");
             } else {
-                // إنشاء حساب جديد
-                localStorage.setItem('profile_' + username, JSON.stringify({ name: username }));
-                alert("تم إنشاء حسابك بنجاح! يمكنك الدخول الآن.");
+                localStorage.setItem('user_' + username, JSON.stringify({ password: password, name: username }));
+                alert("تم التسجيل! يمكنك الدخول الآن.");
             }
         }
 
-        // دالة الدخول (تتأكد من وجود الحساب)
         function login() {
             const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
             
-            if (localStorage.getItem('profile_' + username)) {
+            const userData = JSON.parse(localStorage.getItem('user_' + username));
+            
+            if (userData && userData.password === password) {
                 localStorage.setItem('currentUser', username);
                 window.location.href = "index.html";
             } else {
-                alert("هذا المستخدم غير موجود! يرجى التسجيل أولاً.");
+                alert("اسم المستخدم أو كلمة المرور غير صحيحة!");
             }
         }
     </script>
 </body>
 </html>
+
 
 
