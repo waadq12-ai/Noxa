@@ -2,56 +2,43 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>الإعدادات</title>
-    <style>
-        body { margin: 0; display: flex; background: #000; color: #fff; font-family: sans-serif; }
-        
-        /* القائمة الجانبية */
-        aside { width: 250px; background: #000; height: 100vh; padding: 40px; border-left: 1px solid #333; }
-        aside h2 { margin-bottom: 50px; }
-        aside a, aside button { display: block; color: #fff; text-decoration: none; margin: 20px 0; font-size: 18px; background: none; border: none; cursor: pointer; }
-        aside a:hover { color: #007bff; }
-        
-        /* المحتوى الرئيسي */
-        main { flex: 1; padding: 50px; }
-        .card { background: #1c1c1c; padding: 40px; border-radius: 20px; max-width: 500px; }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-black text-white min-h-screen flex">
 
-<aside>
-    <h2>Noxa</h2>
-    <nav>
-        <a href="settings.html" style="color: #007bff; font-weight: bold;">الإعدادات العامة</a>
-        <a href="history.html">سجل المشاهدة</a>
-        <button onclick="logout()" style="color: red; font-weight: bold;">تسجيل الخروج</button>
-    </nav>
-</aside>
+    <aside class="w-72 bg-black border-l border-gray-800 p-8">
+        <h2 class="text-3xl font-bold mb-12">Noxa</h2>
+        <nav class="space-y-8">
+            <a href="settings.html" class="block text-2xl font-bold text-white">الإعدادات العامة</a>
+            <a href="history.html" class="block text-2xl text-gray-400 hover:text-white">سجل المشاهدة</a>
+            
+            <button onclick="logout()" class="block text-2xl text-red-500 font-bold hover:text-red-400">
+                تسجيل الخروج
+            </button>
+        </nav>
+    </aside>
 
-<main>
-    <h1>الإعدادات العامة</h1>
-    <div class="card">
-        <p>مرحباً بك يا <span id="userNameDisplay" style="color: #007bff; font-weight: bold;"></span></p>
-        <p>تحكم في تفضيلات حسابك وتخصيص تجربتك هنا.</p>
-    </div>
-</main>
+    <main class="flex-1 p-12">
+        <h1 class="text-5xl font-bold mb-10">الإعدادات العامة</h1>
+        <div class="bg-gray-900 p-10 rounded-3xl max-w-2xl">
+            <p class="text-3xl">مرحباً بك يا <span id="userNameDisplay" class="text-blue-500 font-bold"></span></p>
+            <p class="text-2xl text-gray-300 mt-4">تحكم في تفضيلات حسابك وتخصيص تجربتك في Noxa من هنا.</p>
+        </div>
+    </main>
 
-<script>
-    // عرض اسم المستخدم
-    const user = localStorage.getItem('currentUser');
-    if (user) {
-        document.getElementById('userNameDisplay').innerText = user;
-    } else {
-        window.location.href = "login.html"; // إذا لم يكن مسجلاً دخولاً
-    }
+    <script>
+        const user = localStorage.getItem('currentUser');
+        if (user) {
+            document.getElementById('userNameDisplay').innerText = user;
+        } else {
+            window.location.href = "login.html";
+        }
 
-    // دالة تسجيل الخروج
-    function logout() {
-        localStorage.removeItem('currentUser');
-        window.location.href = "login.html";
-    }
-</script>
-
+        function logout() {
+            localStorage.removeItem('currentUser');
+            window.location.href = "login.html";
+        }
+    </script>
 </body>
 </html>
 
