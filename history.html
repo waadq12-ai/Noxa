@@ -52,21 +52,23 @@
             </ul>
     </div>
 
-    <script>
-        // دالة لعرض السجلات
-        function renderHistory() {
-            const list = document.getElementById('history-list');
-            const history = JSON.parse(localStorage.getItem('myHistory')) || [];
-            
-            if (history.length === 0) {
-                list.innerHTML = "<li>لا توجد سجلات حالياً</li>";
-            } else {
-                list.innerHTML = history.map(item => `<li>شاهدت: ${item}</li>`).join('');
-            }
-        }
+function renderHistory() {
+    const list = document.getElementById('history-list');
+    const history = JSON.parse(localStorage.getItem('myHistory')) || [];
+    
+    if (history.length === 0) {
+        list.innerHTML = "<li>لا توجد سجلات حالياً</li>";
+    } else {
+        // هنا نجعل كل حلقة رابطاً يوجه المستخدم للصفحة
+        list.innerHTML = history.map(item => `
+            <li>
+                <a href="watch.html?episode=${encodeURIComponent(item)}" style="text-decoration:none; color:white; display:block;">
+                    شاهدت: ${item} (اضغط للإكمال)
+                </a>
+            </li>
+        `).join('');
+    }
+}
 
-        // عرض السجل عند تحميل الصفحة
-        renderHistory();
-    </script>
 </body>
 </html>
