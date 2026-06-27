@@ -22,12 +22,30 @@
         </nav>
     </aside>
 
-    <main class="flex-1 p-16">
-        <h1 class="text-7xl font-bold mb-16 text-white">الإعدادات العامة</h1>
-        <div class="bg-gray-900 p-12 rounded-[3rem] max-w-3xl">
-            <p class="text-3xl text-gray-300">هنا يمكنك التحكم في إعدادات التطبيق وتفضيلات العرض الخاصة بك.</p>
+   <main class="flex-1 p-16">
+    <h1 class="text-7xl font-bold mb-16 text-white">الإعدادات العامة</h1>
+    
+    <div class="bg-gray-900 p-12 rounded-[3rem] max-w-3xl space-y-10">
+        
+        <div>
+            <label class="text-2xl block mb-4 text-gray-300">لون الثيم الأساسي:</label>
+            <select id="themeColor" onchange="applyTheme()" class="w-full p-6 bg-black rounded-2xl text-2xl border border-gray-700">
+                <option value="bg-black">أسود داكن</option>
+                <option value="bg-blue-950">أزرق ملكي</option>
+                <option value="bg-gray-900">رمادي غامق</option>
+            </select>
         </div>
-    </main>
+
+        <div>
+            <label class="text-2xl block mb-4 text-gray-300">حجم الخط:</label>
+            <div class="flex gap-4">
+                <button onclick="changeFontSize(-2)" class="bg-red-600 px-10 py-6 rounded-2xl text-2xl font-bold">تصغير (-)</button>
+                <button onclick="changeFontSize(2)" class="bg-green-600 px-10 py-6 rounded-2xl text-2xl font-bold">تكبير (+)</button>
+            </div>
+        </div>
+    </div>
+</main>
+
 
     <script>
         // دمج كل الدوال في سكريبت واحد لتجنب التضارب
