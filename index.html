@@ -3,70 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <script src="https://cdn.tailwindcss.com"></script>
-<script>
-    // هذا الكود يتحقق إذا كان هناك مستخدم مسجل
-    const currentUser = localStorage.getItem('currentUser');
-    
-    // إذا لم يجد مستخدماً، يمنعه من الدخول ويرسله لصفحة تسجيل الدخول
-    if (!currentUser) {
-        window.location.href = "login.html";
-    }
-</script>
-
+    <script>
+        // الحماية: التحقق من تسجيل الدخول
+        if (!localStorage.getItem('currentUser')) {
+            window.location.href = "login.html";
+        }
+    </script>
 </head>
 <body class="bg-[#121212] text-white font-sans">
-    
-    <!-- القائمة العلوية: تكبير الخطوط والمسافات -->
+
     <nav class="p-10 bg-black flex justify-between items-center border-b border-gray-800">
         <div class="text-4xl font-bold text-blue-500">Noxa</div>
         <div class="flex gap-12 text-xl font-medium">
             <a href="index.html" class="hover:text-blue-400 transition">الرئيسية</a>
             <a href="series.html" class="hover:text-blue-400 transition">المسلسلات</a>
             <a href="settings.html" class="hover:text-blue-400 transition">الإعدادات</a>
+            <button onclick="logout()" class="text-red-500 hover:text-red-400">خروج</button>
         </div>
     </nav>
 
     <main class="p-12">
         <h2 class="text-4xl font-bold mb-10 border-r-4 border-blue-500 pr-4">المسلسلات والافلام المضافة</h2>
         
-        <!-- زيادة حجم الكرت وعرضه -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
             <div class="bg-gray-900 p-6 rounded-3xl shadow-2xl hover:scale-105 transition duration-300">
                 <img src="https://m.media-amazon.com/images/M/MV5BMTQ5OTgzOTczM15BMl5BanBnXkFtZTcwMDM2OTY4MQ@@._V1_FMjpg_UX1000_.jpg" class="w-full h-96 object-cover rounded-2xl">
                 <h3 class="mt-6 font-bold text-2xl">المنتاليست</h3>
-                <!-- زر مشاهدة ضخم ومريح للضغط -->
-                <a href="series-info.html?id=mentalist" class="mt-6 block w-full bg-blue-600 hover:bg-blue-700 text-center py-4 rounded-xl font-bold text-lg transition">
-                    مشاهدة
-                </a>
+                <a href="series-info.html?id=mentalist" class="mt-6 block w-full bg-blue-600 hover:bg-blue-700 text-center py-4 rounded-xl font-bold text-lg transition">مشاهدة</a>
             </div>
         </div>
     </main>
-<script>
-    // تطبيق الثيم
-    function applyTheme() {
-        const color = document.getElementById('themeColor').value;
-        localStorage.setItem('siteTheme', color);
-        document.body.className = color + " text-white min-h-screen flex";
-    }
 
-    // تغيير الخط
-    function changeFontSize(amount) {
-        let currentSize = parseInt(localStorage.getItem('fontSize')) || 20;
-        let newSize = currentSize + amount;
-        localStorage.setItem('fontSize', newSize);
-        document.body.style.fontSize = newSize + "px";
-    }
+    <script>
+        // دالة الخروج
+        function logout() {
+            localStorage.removeItem('currentUser');
+            window.location.href = "login.html";
+        }
 
-    // استرجاع الإعدادات عند تحميل أي صفحة
-    window.onload = () => {
-        const savedTheme = localStorage.getItem('siteTheme');
-        const savedSize = localStorage.getItem('fontSize');
-        
-        if (savedTheme) document.body.className = savedTheme + " text-white min-h-screen flex";
-        if (savedSize) document.body.style.fontSize = savedSize + "px";
-    };
-</script>
-
+        // تطبيق الإعدادات (الثيم والخط) عند فتح الصفحة
+        window.onload = () => {
+            const savedTheme = localStorage.getItem('siteTheme');
+            const savedSize = localStorage.getItem('fontSize');
+            
+            if (savedTheme) document.body.className = savedTheme + " text-white font-sans";
+            if (savedSize) document.body.style.fontSize = savedSize + "px";
+        };
+    </script>
 </body>
 </html>
 
