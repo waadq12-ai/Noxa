@@ -2,41 +2,17 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>سجل العمليات</title>
+    <title>سجل المشاهدة</title>
     <style>
-        /* الستايل المدمج */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            margin: 0;
-            padding: 20px;
-        }
-        nav {
-            background: #333;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-        nav a {
-            color: white;
-            margin: 0 10px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .container {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        h1 { color: #333; }
-        ul { list-style-type: none; padding: 0; }
-        li {
-            background: #eee;
-            margin: 5px 0;
-            padding: 10px;
-            border-radius: 4px;
-        }
+        body { font-family: sans-serif; background-color: #f4f4f9; margin: 0; }
+        /* شريط التنقل الأسود كما في image_4.png */
+        nav { background: #333; padding: 15px; text-align: center; }
+        nav a { color: white; text-decoration: none; margin: 0 15px; }
+        
+        .container { background: white; margin: 20px; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        h2 { font-size: 18px; color: #333; }
+        ul { list-style: none; padding: 0; }
+        li { background: #f0f0f0; margin: 5px 0; padding: 12px; border-radius: 4px; border-bottom: 1px solid #ddd; }
     </style>
 </head>
 <body>
@@ -47,13 +23,31 @@
     </nav>
 
     <div class="container">
-        <h1>سجل التاريخ</h1>
+        <h2>سجل التاريخ</h2>
         <ul id="history-list">
-            <li>عملية رقم 1: تم تشغيل النظام بنجاح.</li>
-            <li>عملية رقم 2: تم تعديل ملف الإعدادات.</li>
+            <!-- السجلات ستظهر هنا -->
         </ul>
     </div>
 
+    <script>
+        // دالة لإضافة حلقة للسجل (يمكنك استدعاؤها عند الضغط على زر مشاهدة)
+        function addToHistory(episodeName) {
+            let history = JSON.parse(localStorage.getItem('myHistory')) || [];
+            history.push(episodeName);
+            localStorage.setItem('myHistory', JSON.stringify(history));
+            renderHistory();
+        }
+
+        // دالة لعرض السجلات
+        function renderHistory() {
+            const list = document.getElementById('history-list');
+            const history = JSON.parse(localStorage.getItem('myHistory')) || [];
+            list.innerHTML = history.map(item => `<li>شاهدت: ${item}</li>`).join('');
+        }
+
+        // عرض السجل عند تحميل الصفحة
+        renderHistory();
+    </script>
 </body>
 </html>
 
