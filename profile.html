@@ -6,23 +6,23 @@
 </head>
 <body class="bg-black text-white min-h-screen flex text-2xl">
 
+    <!-- القائمة الجانبية -->
     <aside class="w-80 border-l border-gray-800 p-10">
         <h2 class="text-5xl font-bold mb-16">Noxa</h2>
         <nav class="space-y-10">
             <a href="index.html" class="block text-3xl text-gray-400 hover:text-white">الرئيسية</a>
             <a href="settings.html" class="block text-3xl text-gray-400 hover:text-white">الإعدادات العامة</a>
-            
             <a href="profile.html" class="block text-3xl text-white font-bold underline">الملف الشخصي</a>
-            
             <button onclick="logout()" class="block text-3xl text-red-500 font-bold mt-20">تسجيل الخروج</button>
         </nav>
     </aside>
 
+    <!-- المحتوى الرئيسي -->
     <main class="flex-1 p-16">
         <h1 class="text-7xl font-bold mb-16 text-white">الملف الشخصي</h1>
 
-        <div class="bg-gray-900 p-12 rounded-[3rem] max-w-3xl">
-            
+        <!-- جزء الملف الشخصي -->
+        <div class="bg-gray-900 p-12 rounded-[3rem] max-w-3xl mb-16">
             <div class="flex items-center gap-10 mb-12">
                 <img id="profilePreview" src="https://via.placeholder.com/150" class="w-40 h-40 rounded-full object-cover border-4 border-gray-700">
                 <input type="file" id="imageInput" accept="image/*" class="text-2xl" onchange="previewImage()">
@@ -36,24 +36,56 @@
             
             <button onclick="saveAll()" class="bg-blue-600 w-full py-8 rounded-2xl text-4xl font-bold hover:bg-blue-700 text-white">حفظ التعديلات</button>
         </div>
+
+        <!-- جزء سجل المشاهدة المدمج -->
+        <h2 class="text-5xl font-bold mb-10 text-white">سجل المشاهدة</h2>
+        <ul id="history-list" class="space-y-6 max-w-3xl">
+            <!-- سيتم ملء السجل هنا -->
+        </ul>
     </main>
 
     <script>
         const oldUser = localStorage.getItem('currentUser');
+        
         window.onload = function() {
+            // تحميل بيانات الملف الشخصي
             document.getElementById('editUsername').value = oldUser;
             const profile = JSON.parse(localStorage.getItem('profile_' + oldUser));
             if (profile) document.getElementById('editDisplayName').value = profile.name || "";
             const img = localStorage.getItem('profile_img_' + oldUser);
             if (img) document.getElementById('profilePreview').src = img;
+
+            // تحميل سجل المشاهدة
+            loadHistory();
         };
+
+        function loadHistory() {
+            const history = JSON.parse(localStorage.getItem('myHistory_' + oldUser)) || [];
+            const list = document.getElementById('history-list');
+            
+            if (history.length === 0) {
+                list.innerHTML = "<li class='text-2xl text-gray-400 p-8 bg-gray-900 rounded-2xl'>لا توجد مشاهدات حالياً</li>";
+            } else {
+                list.innerHTML = history.map(item => `
+                    <li class="bg-gray-900 p-8 rounded-2xl text-2xl text-white flex justify-between">
+                        <span>${item}</span>
+                    </li>
+                `).join('');
+            }
+        }
 
         function saveAll() {
             const newUsername = document.getElementById('editUsername').value;
             const newDisplayName = document.getElementById('editDisplayName').value;
+            
+            // نقل بيانات السجل للاسم الجديد في حال تغير اليوزر
+            const history = localStorage.getItem('myHistory_' + oldUser);
+            if (history) localStorage.setItem('myHistory_' + newUsername, history);
+
             localStorage.setItem('currentUser', newUsername);
             localStorage.setItem('profile_' + newUsername, JSON.stringify({ name: newDisplayName }));
-            alert("تم حفظ التعديلات بنجاح!");
+            
+            alert("تم حفظ البيانات!");
             location.reload();
         }
 
@@ -70,3 +102,4 @@
     </script>
 </body>
 </html>
+
