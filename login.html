@@ -2,58 +2,53 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <style>
-        body { background: #000; color: #fff; font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .container { background: #1c1c1c; padding: 40px; border-radius: 30px; width: 90%; max-width: 400px; text-align: center; }
-        input { width: 100%; padding: 20px; margin: 15px 0; border-radius: 15px; border: none; background: #333; color: white; font-size: 20px; box-sizing: border-box; }
-        button { width: 100%; padding: 20px; margin-top: 10px; border-radius: 15px; border: none; background: #007bff; color: white; font-size: 20px; font-weight: bold; cursor: pointer; }
-        h1 { font-size: 32px; margin-bottom: 20px; }
-        a { color: #007bff; cursor: pointer; display: block; margin-top: 20px; font-size: 18px; }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-black text-white min-h-screen flex items-center justify-center">
 
-<div class="container">
-    <div id="loginSection">
-        <h1 id="title">تسجيل الدخول</h1>
-        <input type="text" id="user" placeholder="اسم المستخدم">
-        <input type="password" id="pass" placeholder="كلمة المرور">
-        <button onclick="handleAction()">دخول</button>
-        <a id="toggleText" onclick="toggleMode()">ليس لديك حساب؟ أنشئ واحداً</a>
+    <div class="bg-gray-900 p-12 rounded-[3rem] w-full max-w-lg shadow-2xl">
+        <h1 class="text-5xl font-bold mb-10 text-center">Noxa</h1>
+        
+        <label class="block mb-4 text-2xl font-bold">اسم المستخدم:</label>
+        <input type="text" id="username" class="w-full p-6 rounded-2xl bg-black border-2 border-gray-700 text-2xl mb-8 text-white">
+        
+        <!-- زرين لتوضيح العملية -->
+        <div class="grid grid-cols-2 gap-4">
+            <button onclick="register()" class="bg-green-600 py-6 rounded-2xl text-2xl font-bold hover:bg-green-700">تسجيل حساب جديد</button>
+            <button onclick="login()" class="bg-blue-600 py-6 rounded-2xl text-2xl font-bold hover:bg-blue-700">دخول</button>
+        </div>
     </div>
-</div>
 
-<script>
-    let isLogin = true;
+    <script>
+        // دالة التسجيل (تمنع التكرار)
+        function register() {
+            const username = document.getElementById('username').value.trim();
+            
+            if (username === "") { alert("الرجاء إدخال اسم!"); return; }
 
-    function toggleMode() {
-        isLogin = !isLogin;
-        document.getElementById('title').innerText = isLogin ? "تسجيل الدخول" : "إنشاء حساب جديد";
-        document.getElementById('toggleText').innerText = isLogin ? "ليس لديك حساب؟ أنشئ واحداً" : "لديك حساب؟ سجل دخولك";
-    }
+            // التحقق إذا كان اليوزر موجوداً مسبقاً
+            if (localStorage.getItem('profile_' + username)) {
+                alert("عذراً، هذا الاسم مستخدم مسبقاً! جرب اسماً آخر.");
+            } else {
+                // إنشاء حساب جديد
+                localStorage.setItem('profile_' + username, JSON.stringify({ name: username }));
+                alert("تم إنشاء حسابك بنجاح! يمكنك الدخول الآن.");
+            }
+        }
 
-    function handleAction() {
-        const user = document.getElementById('user').value;
-        const pass = document.getElementById('pass').value;
-        let users = JSON.parse(localStorage.getItem('usersDB')) || [];
-
-        if (isLogin) {
-            const found = users.find(u => u.name === user && u.pass === pass);
-            if(found) {
-                localStorage.setItem('currentUser', user);
+        // دالة الدخول (تتأكد من وجود الحساب)
+        function login() {
+            const username = document.getElementById('username').value.trim();
+            
+            if (localStorage.getItem('profile_' + username)) {
+                localStorage.setItem('currentUser', username);
                 window.location.href = "index.html";
             } else {
-                alert("بيانات غير صحيحة");
+                alert("هذا المستخدم غير موجود! يرجى التسجيل أولاً.");
             }
-        } else {
-            if(users.find(u => u.name === user)) return alert("المستخدم موجود!");
-            users.push({name: user, pass: pass});
-            localStorage.setItem('usersDB', JSON.stringify(users));
-            alert("تم إنشاء الحساب! سجل دخولك الآن.");
-            toggleMode();
         }
-    }
-</script>
+    </script>
 </body>
 </html>
+
 
