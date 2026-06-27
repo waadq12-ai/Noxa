@@ -4,15 +4,11 @@
     <meta charset="UTF-8">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-    // هذا الكود يتحقق إذا كان هناك مستخدم مسجل
-    const currentUser = localStorage.getItem('currentUser');
-    
-    // إذا لم يجد مستخدماً، يمنعه من الدخول ويرسله لصفحة تسجيل الدخول
-    if (!currentUser) {
-        window.location.href = "login.html";
-    }
-</script>
-
+        // الحماية
+        if (!localStorage.getItem('currentUser')) {
+            window.location.href = "login.html";
+        }
+    </script>
 </head>
 <body class="bg-[#121212] text-white font-sans">
 
@@ -25,48 +21,39 @@
         <h1 class="text-5xl font-bold mb-16 border-r-8 border-blue-500 pr-6">جميع المسلسلات</h1>
         
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
-            
             <div class="bg-gray-900 p-6 rounded-3xl shadow-2xl hover:scale-105 transition duration-300 border border-gray-800">
-                <img src="https://m.media-amazon.com/images/M/MV5BMTQ5OTgzOTczM15BMl5BanBnXkFtZTcwMDM2OTY4MQ@@._V1_FMjpg_UX1000_.jpg" 
-                     class="w-full h-96 object-cover rounded-2xl">
-                
+                <img src="https://m.media-amazon.com/images/M/MV5BMTQ5OTgzOTczM15BMl5BanBnXkFtZTcwMDM2OTY4MQ@@._V1_FMjpg_UX1000_.jpg" class="w-full h-96 object-cover rounded-2xl">
                 <h3 class="mt-8 font-bold text-3xl">المنتاليست</h3>
-                
-                <a href="series-info.html?id=mentalist" 
-                   class="mt-8 block w-full bg-blue-600 hover:bg-blue-700 text-center py-5 rounded-2xl font-bold text-xl transition">
-                    مشاهدة
-                </a>
+                <a href="series-info.html?id=mentalist" class="mt-8 block w-full bg-blue-600 hover:bg-blue-700 text-center py-5 rounded-2xl font-bold text-xl transition">مشاهدة</a>
             </div>
-            
         </div>
     </main>
-<script>
-    // تطبيق الثيم
-    function applyTheme() {
-        const color = document.getElementById('themeColor').value;
-        localStorage.setItem('siteTheme', color);
-        document.body.className = color + " text-white min-h-screen flex";
-    }
 
-    // تغيير الخط
-    function changeFontSize(amount) {
-        let currentSize = parseInt(localStorage.getItem('fontSize')) || 20;
-        let newSize = currentSize + amount;
-        localStorage.setItem('fontSize', newSize);
-        document.body.style.fontSize = newSize + "px";
-    }
+    <script>
+        // دالة تطبيق الثيم (بدون flex)
+        function applyTheme() {
+            const color = document.getElementById('themeColor')?.value || 'bg-[#121212]';
+            localStorage.setItem('siteTheme', color);
+            document.body.className = color + " text-white font-sans";
+        }
 
-    // استرجاع الإعدادات عند تحميل أي صفحة
-    window.onload = () => {
-        const savedTheme = localStorage.getItem('siteTheme');
-        const savedSize = localStorage.getItem('fontSize');
-        
-        if (savedTheme) document.body.className = savedTheme + " text-white min-h-screen flex";
-        if (savedSize) document.body.style.fontSize = savedSize + "px";
-    };
-</script>
+        // دالة تغيير الخط
+        function changeFontSize(amount) {
+            let currentSize = parseInt(localStorage.getItem('fontSize')) || 20;
+            let newSize = currentSize + amount;
+            localStorage.setItem('fontSize', newSize);
+            document.body.style.fontSize = newSize + "px";
+        }
 
+        // استرجاع الإعدادات (بدون flex)
+        window.onload = () => {
+            const savedTheme = localStorage.getItem('siteTheme');
+            const savedSize = localStorage.getItem('fontSize');
+            
+            if (savedTheme) document.body.className = savedTheme + " text-white font-sans";
+            if (savedSize) document.body.style.fontSize = savedSize + "px";
+        };
+    </script>
 </body>
 </html>
-
 
