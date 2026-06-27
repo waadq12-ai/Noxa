@@ -2,22 +2,72 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>Noxa | الرئيسية</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noxa - منصة المشاهدة</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background-color: #0c0c0c; color: white; font-family: sans-serif; margin: 0; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; padding: 20px; }
-        .card { background: #161616; padding: 10px; border-radius: 10px; text-align: center; }
-        .btn-watch { background: #3498db; color: white; padding: 10px; border: none; border-radius: 5px; width: 100%; cursor: pointer; text-decoration: none; display: block; }
+        body { background-color: #121212; color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .series-banner { background: linear-gradient(to bottom, rgba(0,0,0,0.1), #121212), url('https://placehold.co/1200x400/333/fff?text=Mentalist+Banner'); background-size: cover; height: 400px; }
     </style>
 </head>
 <body>
-    <h1 style="text-align: center;">Noxa</h1>
-    <div class="grid">
-        <div class="card">
-            <div style="background:#333; height:150px; border-radius:5px; margin-bottom:10px;"></div>
-            <h4>المنتاليست</h4>
-            <a href="watch.html" class="btn-watch">مشاهدة</a>
+
+    <!-- القائمة العلوية -->
+    <nav class="flex items-center justify-between p-6 bg-black/50 backdrop-blur-md sticky top-0 z-50">
+        <div class="text-2xl font-bold text-blue-500">Noxa</div>
+        <ul class="flex gap-6">
+            <li><a href="#" class="hover:text-blue-400">الرئيسية</a></li>
+            <li><a href="#" class="hover:text-blue-400">المسلسلات</a></li>
+            <li><a href="#" class="hover:text-blue-400">الأفلام</a></li>
+            <li><a href="#" class="hover:text-blue-400">قائمتي</a></li>
+        </ul>
+        <div class="w-10 h-10 bg-gray-700 rounded-full"></div>
+    </nav>
+
+    <!-- واجهة معلومات المسلسل -->
+    <header class="series-banner flex items-end p-10">
+        <div class="max-w-2xl">
+            <h1 class="text-5xl font-bold mb-4">المنتاليست (The Mentalist)</h1>
+            <p class="text-gray-300 mb-6">باتريك جين، وسيط روحي سابق، يستخدم مهاراته القوية في الملاحظة والاستنتاج لحل الجرائم المعقدة لصالح مكتب التحقيقات في كاليفورنيا.</p>
+            <button class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-bold">مشاهدة الآن</button>
         </div>
-    </div>
+    </header>
+
+    <!-- أقسام المواسم والحلقات -->
+    <main class="p-10 max-w-6xl mx-auto">
+        
+        <!-- اختيار المواسم -->
+        <div class="mb-8">
+            <h2 class="text-2xl mb-4">المواسم</h2>
+            <div class="flex gap-4">
+                <button class="bg-gray-800 px-6 py-2 rounded border border-blue-500">الموسم 1</button>
+                <button class="bg-gray-800 px-6 py-2 rounded hover:bg-gray-700">الموسم 2</button>
+                <button class="bg-gray-800 px-6 py-2 rounded hover:bg-gray-700">الموسم 3</button>
+            </div>
+        </div>
+
+        <!-- قائمة الحلقات -->
+        <div class="grid gap-4">
+            <h2 class="text-2xl mb-2">الحلقات</h2>
+            <div class="bg-gray-900 p-4 rounded flex items-center gap-6 border border-gray-800">
+                <div class="w-32 h-20 bg-gray-700 rounded"></div>
+                <div>
+                    <h3 class="font-bold">الحلقة 1: Pilot</h3>
+                    <p class="text-gray-400 text-sm">مدة الحلقة: 42 دقيقة</p>
+                </div>
+            </div>
+            <div class="bg-gray-900 p-4 rounded flex items-center gap-6 border border-gray-800">
+                <div class="w-32 h-20 bg-gray-700 rounded"></div>
+                <div>
+                    <h3 class="font-bold">الحلقة 2: Red Hair and Silver Tape</h3>
+                    <p class="text-gray-400 text-sm">مدة الحلقة: 41 دقيقة</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
 </body>
 </html>
+```eof
+
+أتمنى أن يعجبك هذا التصميم الجديد! لقد قمت بجعل الصفحة أكثر اتساعاً وجاذبية مع إضافة كل ما طلبته. هل ترغب في إجراء أي تعديلات إضافية على الألوان أو هيكلة القوائم؟
