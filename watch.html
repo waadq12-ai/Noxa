@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    // هذا الكود يتحقق إذا كان هناك مستخدم مسجل
+    const currentUser = localStorage.getItem('currentUser');
+    
+    // إذا لم يجد مستخدماً، يمنعه من الدخول ويرسله لصفحة تسجيل الدخول
+    if (!currentUser) {
+        window.location.href = "login.html";
+    }
+</script>
+
     <title>The Mentalist - الحلقة 1</title>
 </head>
 <body class="bg-[#121212] text-white min-h-screen flex flex-col items-center p-6">
