@@ -4,15 +4,39 @@
     <meta charset="UTF-8">
     <title>سجل المشاهدة</title>
     <style>
-        body { font-family: sans-serif; background-color: #f4f4f9; margin: 0; }
-        /* شريط التنقل الأسود كما في image_4.png */
-        nav { background: #333; padding: 15px; text-align: center; }
-        nav a { color: white; text-decoration: none; margin: 0 15px; }
+        /* تغيير الخلفية للأسود */
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+            background-color: #000; 
+            color: #fff;
+            margin: 0; 
+        }
         
-        .container { background: white; margin: 20px; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        h2 { font-size: 18px; color: #333; }
+        /* شريط التنقل */
+        nav { background: #1c1c1c; padding: 15px; text-align: center; border-bottom: 1px solid #333; }
+        nav a { color: #fff; text-decoration: none; margin: 0 15px; font-weight: bold; }
+        
+        .container { margin: 20px; }
+        
+        /* عنوان كبير وأسود (تم تعديله ليناسب الخلفية السوداء بلون أبيض) */
+        h1 { 
+            font-size: 42px; 
+            color: #fff; 
+            margin: 30px 0; 
+            font-weight: 800; 
+        }
+        
         ul { list-style: none; padding: 0; }
-        li { background: #f0f0f0; margin: 5px 0; padding: 12px; border-radius: 4px; border-bottom: 1px solid #ddd; }
+        
+        /* شكل السجلات */
+        li { 
+            background: #1c1c1c; 
+            margin: 10px 0; 
+            padding: 20px; 
+            border-radius: 12px; 
+            font-size: 18px;
+            color: #ccc;
+        }
     </style>
 </head>
 <body>
@@ -23,26 +47,22 @@
     </nav>
 
     <div class="container">
-        <h2>سجل التاريخ</h2>
+        <h1>سجل التاريخ</h1>
         <ul id="history-list">
-            <!-- السجلات ستظهر هنا -->
-        </ul>
+            </ul>
     </div>
 
     <script>
-        // دالة لإضافة حلقة للسجل (يمكنك استدعاؤها عند الضغط على زر مشاهدة)
-        function addToHistory(episodeName) {
-            let history = JSON.parse(localStorage.getItem('myHistory')) || [];
-            history.push(episodeName);
-            localStorage.setItem('myHistory', JSON.stringify(history));
-            renderHistory();
-        }
-
         // دالة لعرض السجلات
         function renderHistory() {
             const list = document.getElementById('history-list');
             const history = JSON.parse(localStorage.getItem('myHistory')) || [];
-            list.innerHTML = history.map(item => `<li>شاهدت: ${item}</li>`).join('');
+            
+            if (history.length === 0) {
+                list.innerHTML = "<li>لا توجد سجلات حالياً</li>";
+            } else {
+                list.innerHTML = history.map(item => `<li>شاهدت: ${item}</li>`).join('');
+            }
         }
 
         // عرض السجل عند تحميل الصفحة
@@ -50,4 +70,3 @@
     </script>
 </body>
 </html>
-
