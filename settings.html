@@ -4,78 +4,58 @@
     <meta charset="UTF-8">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-    // هذا الكود يتحقق إذا كان هناك مستخدم مسجل
-    const currentUser = localStorage.getItem('currentUser');
-    
-    // إذا لم يجد مستخدماً، يمنعه من الدخول ويرسله لصفحة تسجيل الدخول
-    if (!currentUser) {
-        window.location.href = "login.html";
-    }
-</script>
-
+        // التحقق من تسجيل الدخول (الحارس)
+        if (!localStorage.getItem('currentUser')) {
+            window.location.href = "login.html";
+        }
+    </script>
 </head>
 <body class="bg-black text-white min-h-screen flex text-2xl">
 
-   <aside class="w-80 border-l border-gray-800 p-10 bg-black min-h-screen">
-    <h2 class="text-5xl font-bold mb-16 text-white">Noxa</h2>
-    
-    <nav id="nav-menu" class="space-y-10">
-        <a href="index.html" class="block text-3xl text-gray-400 hover:text-white transition">الرئيسية</a>
-        <a href="settings.html" class="block text-3xl text-gray-400 hover:text-white transition">الإعدادات العامة</a>
-        <a href="profile.html" class="block text-3xl text-white font-bold underline transition">الملف الشخصي</a>
+    <aside class="w-80 border-l border-gray-800 p-10 bg-black min-h-screen">
+        <h2 class="text-5xl font-bold mb-16 text-white">Noxa</h2>
         
+        <nav id="nav-menu" class="space-y-10">
+            <a href="index.html" class="block text-3xl text-gray-400 hover:text-white transition">الرئيسية</a>
+            <a href="settings.html" class="block text-3xl text-white font-bold underline transition">الإعدادات العامة</a>
+            <a href="profile.html" class="block text-3xl text-gray-400 hover:text-white transition">الملف الشخصي</a>
         </nav>
-</aside>
-
-<script>
-    const navMenu = document.getElementById('nav-menu');
-    const isLogged = localStorage.getItem('currentUser');
-
-    if (isLogged) {
-        // إذا كان مسجل دخول، أضف زر الخروج وزر الحذف
-        navMenu.innerHTML += `
-            <button onclick="logout()" class="block text-3xl text-red-500 font-bold mt-20 hover:text-red-400 transition">تسجيل الخروج</button>
-            <button onclick="deleteAccount()" class="block text-3xl text-red-500 font-bold mt-6 hover:text-red-400 transition">حذف الحساب</button>
-        `;
-    } else {
-        navMenu.innerHTML += `
-            <a href="login.html" class="block text-3xl text-blue-500 font-bold mt-20 hover:text-blue-400 transition">تسجيل الدخول</a>
-        `;
-    }
-
-    function logout() {
-        localStorage.removeItem('currentUser');
-        window.location.href = "login.html";
-    }
-
-    function deleteAccount() {
-        if (confirm("هل أنت متأكد؟ سيتم حذف جميع بياناتك نهائياً!")) {
-            const user = localStorage.getItem('currentUser');
-            localStorage.removeItem('user_' + user);
-            localStorage.removeItem('myHistory_' + user);
-            localStorage.removeItem('currentUser');
-            window.location.href = "login.html";
-        }
-    }
-</script>
-
-
+    </aside>
 
     <main class="flex-1 p-16">
         <h1 class="text-7xl font-bold mb-16 text-white">الإعدادات العامة</h1>
-        
         <div class="bg-gray-900 p-12 rounded-[3rem] max-w-3xl">
             <p class="text-3xl text-gray-300">هنا يمكنك التحكم في إعدادات التطبيق وتفضيلات العرض الخاصة بك.</p>
-            </div>
+        </div>
     </main>
 
     <script>
+        // دمج كل الدوال في سكريبت واحد لتجنب التضارب
+        const navMenu = document.getElementById('nav-menu');
+        const isLogged = localStorage.getItem('currentUser');
+
+        // إضافة الأزرار برمجياً للقائمة
+        if (isLogged) {
+            navMenu.innerHTML += `
+                <button onclick="logout()" class="block text-3xl text-red-500 font-bold mt-20 hover:text-red-400 transition">تسجيل الخروج</button>
+                <button onclick="deleteAccount()" class="block text-3xl text-red-500 font-bold mt-6 hover:text-red-400 transition">حذف الحساب</button>
+            `;
+        }
+
         function logout() {
             localStorage.removeItem('currentUser');
             window.location.href = "login.html";
         }
+
+        function deleteAccount() {
+            if (confirm("هل أنت متأكد؟ سيتم حذف جميع بياناتك نهائياً!")) {
+                const user = localStorage.getItem('currentUser');
+                localStorage.removeItem('user_' + user);
+                localStorage.removeItem('myHistory_' + user);
+                localStorage.removeItem('currentUser');
+                window.location.href = "login.html";
+            }
+        }
     </script>
 </body>
 </html>
-
-
