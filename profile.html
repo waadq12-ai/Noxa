@@ -1,3 +1,60 @@
+<div class="bg-gray-900 p-10 rounded-3xl max-w-2xl mt-10">
+    <div class="flex items-center gap-6 mb-10">
+        <img id="profilePreview" src="https://via.placeholder.com/150" class="w-32 h-32 rounded-full object-cover border-4 border-blue-600">
+        <div>
+            <h2 class="text-3xl font-bold" id="displayNameDisplay">اسم المستخدم</h2>
+            <input type="file" id="imageInput" accept="image/*" class="mt-4 text-sm" onchange="previewImage()">
+        </div>
+    </div>
+
+    <label class="text-xl block mb-2">اسم العرض</label>
+    <input type="text" id="editName" class="w-full p-4 mb-6 rounded-xl bg-black text-white text-xl">
+    
+    <button onclick="saveProfile()" class="bg-blue-600 px-8 py-4 rounded-xl text-xl font-bold">حفظ التغييرات</button>
+</div>
+
+<script>
+    let uploadedImage = "";
+
+    // عرض الصورة قبل الحفظ
+    function previewImage() {
+        const file = document.getElementById('imageInput').files[0];
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            uploadedImage = e.target.result;
+            document.getElementById('profilePreview').src = uploadedImage;
+        }
+        reader.readAsDataURL(file);
+    }
+
+    // حفظ البيانات (الصورة + الاسم)
+    function saveProfile() {
+        const user = localStorage.getItem('currentUser');
+        const newName = document.getElementById('editName').value;
+        const dataToSave = { name: newName, image: uploadedImage };
+        
+        localStorage.setItem('profile_' + user, JSON.stringify(dataToSave));
+        document.getElementById('displayNameDisplay').innerText = newName;
+        alert("تم حفظ الملف الشخصي!");
+    }
+
+    // تحميل البيانات عند فتح الصفحة
+    window.onload = function() {
+        const user = localStorage.getItem('currentUser');
+        const profile = JSON.parse(localStorage.getItem('profile_' + user));
+        if (profile) {
+            document.getElementById('editName').value = profile.name;
+            document.getElementById('displayNameDisplay').innerText = profile.name;
+            if (profile.image) {
+                document.getElementById('profilePreview').src = profile.image;
+                uploadedImage = profile.image;
+            }
+        }
+    };
+</script>
+
+
+
 <nav class="space-y-6">
     <a href="settings.html" class="block text-2xl font-bold text-gray-400 hover:text-white">الإعدادات العامة</a>
     
