@@ -18,13 +18,37 @@
         </nav>
     </aside>
 
-    <main class="flex-1 p-12">
-        <h1 class="text-5xl font-bold mb-10">الإعدادات العامة</h1>
-        <div class="bg-gray-900 p-10 rounded-3xl max-w-2xl">
-            <p class="text-3xl">مرحباً بك يا <span id="userNameDisplay" class="text-blue-500 font-bold"></span></p>
-            <p class="text-2xl text-gray-300 mt-4">تحكم في تفضيلات حسابك وتخصيص تجربتك في Noxa من هنا.</p>
-        </div>
-    </main>
+   <div class="bg-gray-900 p-10 rounded-3xl mt-10 max-w-2xl">
+    <h2 class="text-3xl font-bold mb-6">تعديل الملف الشخصي</h2>
+    
+    <label class="text-xl block mb-2">اسم العرض</label>
+    <input type="text" id="editName" class="w-full p-4 mb-6 rounded-xl bg-black text-white text-xl">
+    
+    <label class="text-xl block mb-2">نبذة عني</label>
+    <textarea id="editBio" class="w-full p-4 mb-6 rounded-xl bg-black text-white text-xl"></textarea>
+    
+    <button onclick="saveProfile()" class="bg-blue-600 px-8 py-4 rounded-xl text-xl font-bold">حفظ التغييرات</button>
+</div>
+
+<script>
+    // تحميل البيانات عند فتح الصفحة
+    const user = localStorage.getItem('currentUser');
+    const profile = JSON.parse(localStorage.getItem('profile_' + user)) || { name: user, bio: "" };
+    
+    document.getElementById('editName').value = profile.name;
+    document.getElementById('editBio').value = profile.bio;
+
+    // حفظ البيانات
+    function saveProfile() {
+        const newName = document.getElementById('editName').value;
+        const newBio = document.getElementById('editBio').value;
+        
+        localStorage.setItem('profile_' + user, JSON.stringify({ name: newName, bio: newBio }));
+        alert("تم حفظ التغييرات!");
+        location.reload();
+    }
+</script>
+
 
     <script>
         const user = localStorage.getItem('currentUser');
