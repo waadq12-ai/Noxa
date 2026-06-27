@@ -2,55 +2,17 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>سجل التاريخ</title>
+    <title>سجل المشاهدة</title>
     <style>
-        body { 
-            background-color: #000; 
-            color: #fff; 
-            font-family: sans-serif; 
-            margin: 0; 
-            padding: 30px; /* زيادة الهوامش */
-        }
-        nav { 
-            background: #1c1c1c; 
-            padding: 20px; 
-            text-align: center; 
-            border-radius: 15px; 
-            margin-bottom: 40px; 
-        }
-        nav a { 
-            color: #fff; 
-            text-decoration: none; 
-            margin: 0 20px; 
-            font-size: 18px; /* تكبير خط التنقل */
-            font-weight: bold; 
-        }
-        h1 { 
-            font-size: 48px; /* عنوان ضخم */
-            margin-bottom: 30px; 
-        }
+        body { background-color: #000; color: #fff; font-family: sans-serif; margin: 0; padding: 30px; }
+        nav { background: #1c1c1c; padding: 20px; text-align: center; border-radius: 15px; margin-bottom: 40px; }
+        nav a { color: #fff; text-decoration: none; margin: 0 20px; font-size: 18px; font-weight: bold; }
+        h1 { font-size: 48px; margin-bottom: 30px; }
         ul { list-style: none; padding: 0; }
-        
-        /* تكبير عناصر السجل */
-        li { 
-            background: #1c1c1c; 
-            margin: 20px 0; 
-            padding: 30px; /* مساحة داخلية أكبر */
-            border-radius: 20px; /* زوايا دائرية أكثر */
-        }
-        li a { 
-            color: #fff; 
-            text-decoration: none; 
-            display: block; 
-            font-size: 24px; /* خط اسم المسلسل والحلقة كبير */
-            font-weight: bold;
-        }
-        li span { 
-            color: #aaa; 
-            font-size: 18px; /* خط فرعي أكبر */
-            display: block; 
-            margin-top: 10px; 
-        }
+        li { background: #1c1c1c; margin: 20px 0; padding: 30px; border-radius: 20px; }
+        li a { color: #fff; text-decoration: none; display: block; }
+        .show-name { font-size: 28px; font-weight: bold; display: block; }
+        .sub-text { color: #aaa; font-size: 20px; display: block; margin-top: 10px; }
     </style>
 </head>
 <body>
@@ -60,29 +22,28 @@
         <a href="settings.html">الإعدادات</a>
     </nav>
 
-    <h1>سجل المشاهدة</h1>
+    <h1>سجل التاريخ</h1>
     <ul id="history-list"></ul>
 
-   <script>
-    function renderHistory() {
-        const list = document.getElementById('history-list');
-        const history = JSON.parse(localStorage.getItem('myHistory')) || [];
-        
-        if (history.length === 0) {
-            list.innerHTML = "<li style='text-align:center;'>لا توجد سجلات حالياً</li>";
-        } else {
-            list.innerHTML = history.map(item => `
-                <li>
-                    <a href="watch.html?episode=${encodeURIComponent(item)}">
-                        ${item}
-                        <span>اضغط للعودة للمشاهدة</span>
-                    </a>
-                </li>
-            `).join('');
+    <script>
+        function renderHistory() {
+            const list = document.getElementById('history-list');
+            const history = JSON.parse(localStorage.getItem('myHistory')) || [];
+            
+            if (history.length === 0) {
+                list.innerHTML = "<li style='text-align:center;'>لا توجد سجلات حالياً</li>";
+            } else {
+                list.innerHTML = history.map(item => `
+                    <li>
+                        <a href="watch.html?episode=${encodeURIComponent(item)}">
+                            <span class="show-name">${item}</span>
+                            <span class="sub-text">اضغط للعودة للمشاهدة</span>
+                        </a>
+                    </li>
+                `).join('');
+            }
         }
-    }
-    renderHistory();
-</script>
-
+        renderHistory();
+    </script>
 </body>
 </html>
