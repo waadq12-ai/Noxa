@@ -1,54 +1,62 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <title>تسجيل الدخول</title>
-    <style>
-        body { background-color: #000; color: #fff; font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .login-container { background: #1c1c1c; padding: 30px; border-radius: 15px; width: 300px; text-align: center; }
-        h1 { font-size: 24px; margin-bottom: 20px; }
-        input { width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; border: none; background: #333; color: white; box-sizing: border-box; }
-        button { width: 100%; padding: 12px; border-radius: 8px; border: none; background: #0a84ff; color: white; font-weight: bold; cursor: pointer; margin-top: 10px; }
-        a { color: #888; text-decoration: none; display: block; margin-top: 15px; font-size: 14px; }
-    </style>
-</head>
-<body>
+<body style="background:#000; color:#fff; text-align:center; padding:50px;">
 
-    <div class="login-container">
-        <h1>تسجيل الدخول</h1>
-       <form id="loginForm">
-    <input type="text" id="username" placeholder="اسم المستخدم" required>
-    <input type="password" id="password" placeholder="كلمة المرور" required>
-    <button type="submit">دخول</button>
-</form>
-
-<script>
-    // قائمة الحسابات المسموحة (يمكنك إضافة أي حسابات هنا)
-    const usersDB = [
-        { name: "ahmed", pass: "12345" },
-        { name: "sara", pass: "67890" }
-    ];
-
-    document.getElementById('loginForm').onsubmit = function(e) {
-        e.preventDefault();
-        const user = document.getElementById('username').value;
-        const pass = document.getElementById('password').value;
-
-        // التحقق من الحساب
-        const found = usersDB.find(u => u.name === user && u.pass === pass);
-        
-        if (found) {
-            localStorage.setItem('currentUser', user);
-            window.location.href = "index.html";
-        } else {
-            alert("خطأ في اسم المستخدم أو كلمة المرور!");
-        }
-    };
-</script>
-
-
-        <a href="index.html">العودة للرئيسية</a>
+    <h1>مرحباً بك</h1>
+    
+    <div id="loginSection">
+        <h2>تسجيل الدخول</h2>
+        <input type="text" id="lUser" placeholder="اسم المستخدم"><br>
+        <input type="password" id="lPass" placeholder="كلمة المرور"><br>
+        <button onclick="login()">دخول</button>
+        <p onclick="showSignUp()">ليس لديك حساب؟ <a>أنشئ حساباً جديداً</a></p>
     </div>
 
+    <div id="signUpSection" style="display:none;">
+        <h2>إنشاء حساب جديد</h2>
+        <input type="text" id="sUser" placeholder="اسم المستخدم"><br>
+        <input type="password" id="sPass" placeholder="كلمة المرور"><br>
+        <button onclick="signUp()">تسجيل</button>
+    </div>
+
+    <script>
+        function showSignUp() {
+            document.getElementById('loginSection').style.display = 'none';
+            document.getElementById('signUpSection').style.display = 'block';
+        }
+
+        // إنشاء حساب
+        function signUp() {
+            const user = document.getElementById('sUser').value;
+            const pass = document.getElementById('sPass').value;
+            
+            // تخزين الحساب في قائمة (usersDB)
+            let users = JSON.parse(localStorage.getItem('usersDB')) || [];
+            if(users.find(u => u.name === user)) {
+                alert("المستخدم موجود بالفعل!");
+                return;
+            }
+            users.push({name: user, pass: pass});
+            localStorage.setItem('usersDB', JSON.stringify(users));
+            alert("تم إنشاء الحساب بنجاح! يمكنك تسجيل الدخول الآن.");
+            location.reload();
+        }
+
+        // تسجيل الدخول
+        function login() {
+            const user = document.getElementById('lUser').value;
+            const pass = document.getElementById('lPass').value;
+            let users = JSON.parse(localStorage.getItem('usersDB')) || [];
+            
+            const found = users.find(u => u.name === user && u.pass === pass);
+            if(found) {
+                localStorage.setItem('currentUser', user);
+                window.location.href = "index.html";
+            } else {
+                alert("خطأ في البيانات");
+            }
+        }
+    </script>
 </body>
 </html>
+
