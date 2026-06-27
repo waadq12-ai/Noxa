@@ -1,22 +1,15 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <head>
-<title>The Mentalist - الحلقة 1</title>
-
-</head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>مشاهدة الحلقة | Noxa</title>
+    <title>The Mentalist - الحلقة 1</title>
 </head>
 <body class="bg-[#121212] text-white min-h-screen flex flex-col items-center p-6">
 
-    <!-- العنوان بتصميم ضخم ومريح -->
-    <h2 class="text-3xl font-bold mb-8 text-center">مشاهدة الحلقة الأولى - The Mentalist</h2>
+    <h2 class="text-4xl font-bold mb-8 text-center">مشاهدة الحلقة الأولى - The Mentalist</h2>
 
-    <!-- حاوية الفيديو مع إطار وتصميم Noxa -->
     <div class="w-full max-w-5xl bg-black p-2 rounded-2xl shadow-2xl border border-gray-800">
         <div class="relative w-full pt-[56.25%]">
             <iframe 
@@ -28,37 +21,32 @@
         </div>
     </div>
 
-    <!-- زر العودة -->
-    <a href="series-info.html?id=mentalist" class="mt-10 bg-gray-800 hover:bg-gray-700 text-white font-bold py-3 px-8 rounded-xl transition">
+    <a href="series-info.html?id=mentalist" class="mt-10 bg-gray-800 hover:bg-gray-700 text-white font-bold py-4 px-10 rounded-2xl transition text-xl">
         العودة لصفحة المسلسل
     </a>
-<body>
-    <button onclick="addToHistory('الحلقة رقم 1')">شاهدت الحلقة 1</button>
 
-      <script>
+    <script>
         window.onload = function() {
-    const user = localStorage.getItem('currentUser');
-    if (!user) return; // إذا لم يسجل دخول، لا تحفظ
+            const user = localStorage.getItem('currentUser');
+            // اسم الحلقة الذي سيظهر في سجل المشاهدة
+            const episodeTitle = "The Mentalist - الحلقة 1";
 
-    let title = document.title;
-    // مفتاح التخزين سيكون مرتبطاً باسم المستخدم (مثلاً: history_Ahmed)
-    let storageKey = 'myHistory_' + user;
-    
-    let history = JSON.parse(localStorage.getItem(storageKey)) || [];
-    
-    if (!history.includes(title)) {
-        history.push(title);
-        localStorage.setItem(storageKey, JSON.stringify(history));
-    }
-};
+            if (!user) return; // إذا لم يسجل دخول، لا تحفظ
 
+            // مفتاح التخزين الموحد
+            let storageKey = 'myHistory_' + user;
+            
+            // جلب السجل الحالي أو إنشاء مصفوفة فارغة
+            let history = JSON.parse(localStorage.getItem(storageKey)) || [];
+            
+            // إضافة الحلقة للسجل إذا لم تكن موجودة لمنع التكرار
+            if (!history.includes(episodeTitle)) {
+                history.push(episodeTitle);
+                localStorage.setItem(storageKey, JSON.stringify(history));
+                console.log("تم إضافة الحلقة للسجل!");
+            }
+        };
     </script>
 </body>
 </html>
 
-
-
-</body>
-
-</body>
-</html>
