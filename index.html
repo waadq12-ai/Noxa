@@ -2,23 +2,37 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-[#121212] text-white p-10">
-    <h1 class="text-3xl font-bold mb-8">المسلسلات المضافة</h1>
-    
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+<body class="bg-[#121212] text-white font-sans">
+
+    <nav class="flex items-center justify-between p-6 bg-black">
+        <div class="text-2xl font-bold text-blue-500">Noxa</div>
+        <div class="flex gap-6 text-sm">
+            <a href="index.html" class="hover:text-blue-400">الرئيسية</a>
+            <a href="series.html" class="hover:text-blue-400">المسلسلات</a>
+            <a href="movies.html" class="hover:text-blue-400">الأفلام</a>
+        </div>
+    </nav>
+
+    <main class="p-6">
+        <h2 class="text-xl font-bold mb-6">المسلسلات المضافة</h2>
         
-        <a href="series.html" class="block group">
-            <div class="rounded-lg overflow-hidden border border-gray-800 hover:border-blue-500 transition">
-                <img src="https://m.media-amazon.com/images/M/MV5BMTQ5OTgzOTczM15BMl5BanBnXkFtZTcwMDM2OTY4MQ@@._V1_FMjpg_UX1000_.jpg" class="w-full h-60 object-cover">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="bg-gray-900 rounded-lg overflow-hidden">
+                <img src="htpps://m.media-amazon.com/images/M/MV5BMTQ5OTgzOTczM15BMl5BanBnXkFtZTcwMDM2OTY4MQ@@._V1_FMjpg_UX1000_.jpg" class="w-full h-60 object-cover">
                 <div class="p-3">
                     <h3 class="font-bold">المنتاليست</h3>
-                    <p class="text-xs text-gray-400">جريمة / دراما</p>
+                    <p class="text-xs text-gray-400 mb-3">جريمة / دراما</p>
+                    <a href="series.html" class="block text-center bg-blue-600 hover:bg-blue-700 py-2 rounded text-sm font-bold">
+                        مشاهدة
+                    </a>
                 </div>
             </div>
-        </a>
+        </div>
+    </main>
 
-    </div>
 </body>
 </html>
+
