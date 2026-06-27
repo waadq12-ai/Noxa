@@ -75,5 +75,31 @@
             }
         }
     </script>
+    <script>
+    // تطبيق الثيم
+    function applyTheme() {
+        const color = document.getElementById('themeColor').value;
+        localStorage.setItem('siteTheme', color);
+        document.body.className = color + " text-white min-h-screen flex";
+    }
+
+    // تغيير الخط
+    function changeFontSize(amount) {
+        let currentSize = parseInt(localStorage.getItem('fontSize')) || 20;
+        let newSize = currentSize + amount;
+        localStorage.setItem('fontSize', newSize);
+        document.body.style.fontSize = newSize + "px";
+    }
+
+    // استرجاع الإعدادات عند تحميل أي صفحة
+    window.onload = () => {
+        const savedTheme = localStorage.getItem('siteTheme');
+        const savedSize = localStorage.getItem('fontSize');
+        
+        if (savedTheme) document.body.className = savedTheme + " text-white min-h-screen flex";
+        if (savedSize) document.body.style.fontSize = savedSize + "px";
+    };
+</script>
+
 </body>
 </html>
